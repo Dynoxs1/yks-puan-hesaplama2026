@@ -5,43 +5,34 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>YKS Net ve Puan Hesaplama | TYT AYT 2026</title>
   <meta name="description" content="YKS 2026 TYT ve AYT net hesaplama aracı. Doğru yanlış girerek netini ve tahmini puanını hemen öğren. Ücretsiz YKS puan hesaplama sitesi.">
-
-  <!-- Tailwind & Chart.js -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-  <style>
-    .card { background:#fff; border-radius:1rem; box-shadow:0 4px 10px rgba(0,0,0,0.1); padding:1rem; margin-bottom:1.5rem; }
-    input:focus { outline:none; border-color:#3b82f6; box-shadow:0 0 5px rgba(59,130,246,0.5); }
-    button:hover { box-shadow:0 4px 12px rgba(59,130,246,0.4); }
-    h1 { background: linear-gradient(90deg, #3b82f6, #06b6d4); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-  </style>
 </head>
 <body class="bg-gray-100 p-0 sm:p-6">
 
 <div class="w-full sm:max-w-2xl mx-auto">
 
   <!-- Başlık ve Banner -->
-  <div class="card">
+  <div class="bg-white rounded-xl shadow-md p-6 mb-6">
     <h1 class="text-3xl sm:text-4xl font-bold text-center mb-4">YKS Net & Puan Hesaplama</h1>
     <img src="images/banner.jpg" alt="YKS Net ve Puan Hesaplama" class="w-full h-auto rounded-xl mb-4 object-cover">
   </div>
 
-  <!-- Banner altı animasyonlu metinler -->
-  <div class="flex justify-center items-center mt-6 mb-6 gap-4 flex-wrap">
-    <div class="flex flex-col items-center p-4 bg-blue-100 rounded-xl shadow-lg hover:shadow-xl transition transform hover:-translate-y-1 flex-[1_1_150px] max-w-[200px] min-w-[120px]">
+  <!-- Banner altı animasyonlu kutular -->
+  <div class="flex flex-wrap justify-center items-center mt-6 mb-6 gap-4">
+    <div class="flex-1 min-w-[150px] max-w-[200px] flex flex-col items-center p-4 bg-blue-100 rounded-xl shadow-lg hover:shadow-xl transition transform hover:-translate-y-1">
       <span class="font-semibold text-center text-lg animate-bounce hover:text-blue-700 transition">Kolay Net Girişi</span>
     </div>
-    <div class="flex flex-col items-center p-4 bg-green-100 rounded-xl shadow-lg hover:shadow-xl transition transform hover:-translate-y-1 flex-[1_1_150px] max-w-[200px] min-w-[120px]">
+    <div class="flex-1 min-w-[150px] max-w-[200px] flex flex-col items-center p-4 bg-green-100 rounded-xl shadow-lg hover:shadow-xl transition transform hover:-translate-y-1">
       <span class="font-semibold text-center text-lg animate-bounce hover:text-green-700 transition">Hızlı Puan Hesaplama</span>
     </div>
-    <div class="flex flex-col items-center p-4 bg-purple-100 rounded-xl shadow-lg hover:shadow-xl transition transform hover:-translate-y-1 flex-[1_1_150px] max-w-[200px] min-w-[120px]">
+    <div class="flex-1 min-w-[150px] max-w-[200px] flex flex-col items-center p-4 bg-purple-100 rounded-xl shadow-lg hover:shadow-xl transition transform hover:-translate-y-1">
       <span class="font-semibold text-center text-lg animate-bounce hover:text-purple-700 transition">Mobil Uyumlu</span>
     </div>
   </div>
 
   <!-- TYT Tablosu -->
-  <div class="card overflow-x-auto">
+  <div class="bg-white rounded-xl shadow-md p-4 mb-6 overflow-x-auto">
     <h2 class="text-2xl sm:text-3xl font-semibold mb-2">TYT</h2>
     <table class="w-full border border-gray-300 rounded-lg text-lg">
       <thead class="bg-gray-100">
@@ -73,7 +64,7 @@
   </div>
 
   <!-- AYT Tablosu -->
-  <div class="card overflow-x-auto">
+  <div class="bg-white rounded-xl shadow-md p-4 mb-6 overflow-x-auto">
     <h2 class="text-2xl sm:text-3xl font-semibold mb-2">AYT</h2>
     <table class="w-full border border-gray-300 rounded-lg text-lg">
       <thead class="bg-gray-100">
@@ -105,7 +96,7 @@
   </div>
 
   <!-- Diploma ve Hesapla -->
-  <div class="card">
+  <div class="bg-white rounded-xl shadow-md p-4 mb-6">
     <label class="block mb-3 text-lg">Diploma Notu:
       <input id="diploma" type="number" class="border p-3 w-full rounded text-lg">
     </label>
