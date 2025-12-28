@@ -28,15 +28,15 @@
   </div>
 
   <!-- Banner altı animasyonlu metinler -->
-  <div class="flex flex-col sm:flex-row justify-around items-center mt-6 mb-6 gap-4">
-    <div class="flex flex-col items-center p-4 bg-white rounded-xl shadow-lg hover:shadow-xl transition transform hover:-translate-y-1 w-40">
-      <span class="font-semibold text-center text-lg animate-bounce">Kolay Net Girişi</span>
+  <div class="flex justify-center items-center mt-6 mb-6 gap-4 flex-wrap">
+    <div class="flex flex-col items-center p-4 bg-blue-100 rounded-xl shadow-lg hover:shadow-xl transition transform hover:-translate-y-1 flex-[1_1_150px] max-w-[200px] min-w-[120px]">
+      <span class="font-semibold text-center text-lg animate-bounce hover:text-blue-700 transition">Kolay Net Girişi</span>
     </div>
-    <div class="flex flex-col items-center p-4 bg-white rounded-xl shadow-lg hover:shadow-xl transition transform hover:-translate-y-1 w-40">
-      <span class="font-semibold text-center text-lg animate-bounce">Hızlı Puan Hesaplama</span>
+    <div class="flex flex-col items-center p-4 bg-green-100 rounded-xl shadow-lg hover:shadow-xl transition transform hover:-translate-y-1 flex-[1_1_150px] max-w-[200px] min-w-[120px]">
+      <span class="font-semibold text-center text-lg animate-bounce hover:text-green-700 transition">Hızlı Puan Hesaplama</span>
     </div>
-    <div class="flex flex-col items-center p-4 bg-white rounded-xl shadow-lg hover:shadow-xl transition transform hover:-translate-y-1 w-40">
-      <span class="font-semibold text-center text-lg animate-bounce">Mobil Uyumlu</span>
+    <div class="flex flex-col items-center p-4 bg-purple-100 rounded-xl shadow-lg hover:shadow-xl transition transform hover:-translate-y-1 flex-[1_1_150px] max-w-[200px] min-w-[120px]">
+      <span class="font-semibold text-center text-lg animate-bounce hover:text-purple-700 transition">Mobil Uyumlu</span>
     </div>
   </div>
 
