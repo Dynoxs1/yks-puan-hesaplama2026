@@ -6,7 +6,9 @@
 <title>YKS Net ve Puan Hesaplama</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="https://cdn.tailwindcss.com"></script>
-</head>
+</head><img src="images/banner.jpg" alt="YKS Puan Hesaplama"
+     style="max-width:100%; border-radius:12px; margin:20px 0;">
+
 
 <body class="bg-gray-100 p-6">
 <div class="max-w-2xl mx-auto bg-white p-6 rounded-xl shadow">
