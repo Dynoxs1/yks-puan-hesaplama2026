@@ -121,8 +121,52 @@ function hesapla() {
 </html>
 <hr>
 <footer style="text-align:center; margin-top:20px;">
-  <a href="hakkimizda.html">Hakkımızda</a> |
-  <a href="gizlilik.html">Gizlilik Politikası</a> |
-  <a href="iletisim.html">İletişim</a>
-</footer>
+  <a href="hakkimizda.html">Hakkımızda</a> |📄 HAKKIMIZDA
 
+YKS Puan Hesaplama, üniversite sınavına hazırlanan adayların TYT ve AYT netlerini hızlı ve pratik şekilde hesaplayabilmesi için oluşturulmuş ücretsiz bir web sitesidir.
+
+Amacımız; öğrencilerin doğru–yanlış sayılarını girerek netlerini öğrenmelerini, tahmini puanlarını görmelerini ve sınav sürecini daha bilinçli şekilde planlamalarını sağlamaktır.
+
+Sitemizde yer alan hesaplamalar bilgilendirme amaçlıdır. ÖSYM tarafından açıklanan resmi sonuçlar ile birebir aynı olmayabilir. Hesaplamalar, genel kabul görmüş katsayılara ve geçmiş yıllardaki sınav sistemine dayalı tahmini verilerdir.
+
+YKS sürecinde adaylara faydalı, sade ve erişilebilir bir araç sunmayı hedefliyoruz.
+  <a href="gizlilik.html">Gizlilik Politikası</a> |🔒 GİZLİLİK POLİTİKASI (ÇOK ÖNEMLİ – ADSENSE)
+
+Bu gizlilik politikası, YKS Puan Hesaplama web sitesini ziyaret eden kullanıcılar için geçerlidir.
+
+Toplanan Bilgiler
+
+Sitemizi ziyaret ettiğinizde:
+
+Kişisel bilgi (ad, soyad, TC kimlik vb.) toplanmaz
+
+Girilen doğru–yanlış bilgileri kaydedilmez
+
+Hesaplamalar yalnızca tarayıcı üzerinde yapılır
+
+Çerezler (Cookies)
+
+Google AdSense ve benzeri üçüncü taraf reklam sağlayıcıları, kullanıcılara ilgi alanlarına göre reklam göstermek için çerezler kullanabilir.
+
+Google’ın çerez kullanımı hakkında daha fazla bilgi için:
+https://policies.google.com/technologies/ads
+
+Kullanıcılar, tarayıcı ayarlarından çerezleri devre dışı bırakabilir.
+
+Üçüncü Taraf Bağlantılar
+
+Sitemizde üçüncü taraf web sitelerine yönlendiren bağlantılar bulunabilir. Bu sitelerin gizlilik uygulamalarından sitemiz sorumlu değildir.
+  <a href="iletisim.html">İletişim</a>📞 İLETİŞİM
+
+Bizimle iletişime geçmek için aşağıdaki e-posta adresini kullanabilirsiniz:
+
+📧 furkanok61@gmail.com
+
+Öneri, geri bildirim ve hata bildirimlerinizi memnuniyetle değerlendiriyoruz.
+</footer>
+⚠️ YASAL UYARI / SORUMLULUK REDDİ
+
+Bu sitede yer alan TYT ve AYT puan hesaplamaları tahmini sonuçlar sunar.
+
+ÖSYM tarafından açıklanan resmi sınav sonuçları esas alınmalıdır.
+Sitemizde yer alan bilgiler doğrultusunda alınan kararlardan doğabilecek sonuçlardan site yönetimi sorumlu tutulamaz.
