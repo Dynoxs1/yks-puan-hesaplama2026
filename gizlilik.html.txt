@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gizlilik Politikası</title>
+</head>
+<body>
+
+<h1>🔒 Gizlilik Politikası</h1>
+
+<p>
+Bu gizlilik politikası, YKS Puan Hesaplama web sitesini ziyaret eden kullanıcılar için geçerlidir.
+</p>
+
+<h3>Toplanan Bilgiler</h3>
+<ul>
+  <li>Kişisel bilgiler toplanmaz</li>
+  <li>Girilen doğru–yanlış verileri kaydedilmez</li>
+  <li>Hesaplamalar tarayıcı üzerinde yapılır</li>
+</ul>
+
+<h3>Çerezler</h3>
+<p>
+Google AdSense, kullanıcıya uygun reklam göstermek için çerez kullanabilir.
+</p>
+
+</body>
+</html>
