@@ -120,10 +120,8 @@ function hesapla() {
 </body>
 </html>
 <hr>
-<footer style="text-align:center; margin-top:20px;">
+<footer style="text-align:center; margin-top:20px;"><br>
 
-  
-  
   
   <a href="hakkimizda.html">Hakkımızda</a> |📄 HAKKIMIZDA
 
@@ -138,7 +136,8 @@ YKS sürecinde adaylara faydalı, sade ve erişilebilir bir araç sunmayı hedef
 
   
    
- <a href="gizlilik.html">Gizlilik Politikası</a> | 🔒 GİZLİLİK POLİTİKASI (ÇOK ÖNEMLİ – ADSENSE)
+ <a href="gizlilik.html">Gizlilik Politikası</a> | 🔒 GİZLİLİK POLİTİKASI (ÇOK ÖNEMLİ – ADSENSE)<br>
+
 
 Bu gizlilik politikası, YKS Puan Hesaplama web sitesini ziyaret eden kullanıcılar için geçerlidir.
 
@@ -163,9 +162,7 @@ Kullanıcılar, tarayıcı ayarlarından çerezleri devre dışı bırakabilir.
 
 Üçüncü Taraf Bağlantılar
 
-Sitemizde üçüncü taraf web sitelerine yönlendiren bağlantılar bulunabilir. Bu sitelerin gizlilik uygulamalarından sitemiz sorumlu değildir.
- 
-
+Sitemizde üçüncü taraf web sitelerine yönlendiren bağlantılar bulunabilir. Bu sitelerin gizlilik uygulamalarından sitemiz sorumlu değildir.<br>
 
   
   <a href="iletisim.html">İletişim</a>📞 İLETİŞİM
@@ -175,9 +172,7 @@ Bizimle iletişime geçmek için aşağıdaki e-posta adresini kullanabilirsiniz
 📧 furkanok61@gmail.com
 
 Öneri, geri bildirim ve hata bildirimlerinizi memnuniyetle değerlendiriyoruz.
-</footer>
-
-
+</footer><br>
 
 
 ⚠️ YASAL UYARI / SORUMLULUK REDDİ
