@@ -16,7 +16,8 @@
 <h1 class="text-2xl font-bold text-center mb-6">YKS Net & Puan Hesaplama</h1>
 <img src="images/banner.jpg"
      alt="YKS Net ve Puan Hesaplama"
-     class="w-full rounded-xl mb-6">
+     style="width:100%; height:auto; display:block; border:2px solid red;">
+
 
 <!-- TYT -->
 <h2 class="text-xl font-semibold mb-2">TYT</h2>
