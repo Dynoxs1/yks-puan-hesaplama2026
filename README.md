@@ -15,7 +15,6 @@
     input:focus { outline:none; border-color:#3b82f6; box-shadow:0 0 5px rgba(59,130,246,0.5); }
     button:hover { box-shadow:0 4px 12px rgba(59,130,246,0.4); }
     h1 { background: linear-gradient(90deg, #3b82f6, #06b6d4); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    .icon-card img { width:4rem; height:4rem; }
   </style>
 </head>
 <body class="bg-gray-100 p-0 sm:p-6">
@@ -28,19 +27,16 @@
     <img src="images/banner.jpg" alt="YKS Net ve Puan Hesaplama" class="w-full h-auto rounded-xl mb-4 object-cover">
   </div>
 
-  <!-- Banner altı animasyonlu ikonlar -->
+  <!-- Banner altı animasyonlu metinler -->
   <div class="flex flex-col sm:flex-row justify-around items-center mt-6 mb-6 gap-4">
-    <div class="icon-card flex flex-col items-center p-4 bg-white rounded-xl shadow-lg hover:shadow-xl transition transform hover:-translate-y-1 w-40">
-      <img src="images/icon1.png" alt="Kolay Net Girişi" class="mb-2 animate-bounce">
-      <span class="font-semibold text-center">Kolay Net Girişi</span>
+    <div class="flex flex-col items-center p-4 bg-white rounded-xl shadow-lg hover:shadow-xl transition transform hover:-translate-y-1 w-40">
+      <span class="font-semibold text-center text-lg animate-bounce">Kolay Net Girişi</span>
     </div>
-    <div class="icon-card flex flex-col items-center p-4 bg-white rounded-xl shadow-lg hover:shadow-xl transition transform hover:-translate-y-1 w-40">
-      <img src="images/icon2.png" alt="Hızlı Puan Hesaplama" class="mb-2 animate-bounce">
-      <span class="font-semibold text-center">Hızlı Puan Hesaplama</span>
+    <div class="flex flex-col items-center p-4 bg-white rounded-xl shadow-lg hover:shadow-xl transition transform hover:-translate-y-1 w-40">
+      <span class="font-semibold text-center text-lg animate-bounce">Hızlı Puan Hesaplama</span>
     </div>
-    <div class="icon-card flex flex-col items-center p-4 bg-white rounded-xl shadow-lg hover:shadow-xl transition transform hover:-translate-y-1 w-40">
-      <img src="images/icon3.png" alt="Mobil Uyumlu" class="mb-2 animate-bounce">
-      <span class="font-semibold text-center">Mobil Uyumlu</span>
+    <div class="flex flex-col items-center p-4 bg-white rounded-xl shadow-lg hover:shadow-xl transition transform hover:-translate-y-1 w-40">
+      <span class="font-semibold text-center text-lg animate-bounce">Mobil Uyumlu</span>
     </div>
   </div>
 
@@ -142,5 +138,6 @@ function hesapla() {
   window.chart = new Chart(ctx,{type:"bar",data:{labels:["TYT","AYT"],datasets:[{label:"Puan",data:[tytPuan,aytPuan]}]}});
 }
 </script>
+
 </body>
 </html>
