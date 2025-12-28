@@ -16,25 +16,14 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-     
-<title>YKS Net ve Puan Hesaplama</title>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="https://cdn.tailwindcss.com"></script>
-</head>
-     
-
-
 <body class="bg-gray-100 p-6">
+
 <div class="max-w-2xl mx-auto bg-white p-6 rounded-xl shadow">
 
 <h1 class="text-2xl font-bold text-center mb-6">YKS Net & Puan Hesaplama</h1>
 <img src="images/banner.jpg"
      alt="YKS Net ve Puan Hesaplama"
      class="w-full rounded-xl mb-6">
-
 
 <!-- TYT -->
 <h2 class="text-xl font-semibold mb-2">TYT</h2>
@@ -140,8 +129,6 @@ function hesapla() {
 }
 </script>
 
-</body>
-</html>
 <hr>
 <footer style="text-align:center; margin:20px 0;">
   <a href="hakkimizda.html">Hakkımızda</a> |
@@ -149,4 +136,5 @@ function hesapla() {
   <a href="iletisim.html">İletişim</a>
 </footer>
 
-
+</body>
+</html>
