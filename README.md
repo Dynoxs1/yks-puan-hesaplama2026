@@ -27,7 +27,7 @@
       <span class="font-semibold text-center text-lg animate-bounce hover:text-green-700 transition">Hızlı Puan Hesaplama</span>
     </div>
     <div class="flex-1 min-w-[150px] max-w-[200px] flex flex-col items-center p-4 bg-purple-100 rounded-xl shadow-lg hover:shadow-xl transition transform hover:-translate-y-1">
-      <span class="font-semibold text-center text-lg animate-bounce hover:text-purple-700 transition">Mobil Uyumlu</span>
+      <span class="font-semibold text-center text-lg animate-bounce hover:text-purple-700 transition">Mobil</span>
     </div>
   </div>
 
