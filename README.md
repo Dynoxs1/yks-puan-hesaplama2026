@@ -7,20 +7,67 @@
   <meta name="description" content="YKS 2026 TYT ve AYT net hesaplama aracı. Doğru yanlış girerek netini ve tahmini puanını hemen öğren. Ücretsiz YKS puan hesaplama sitesi.">
   <meta name="keywords" content="YKS puan hesaplama, TYT net hesaplama, AYT net hesaplama, YKS 2026">
 
+  <!-- Tailwind & Chart.js -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Özel stil -->
+  <style>
+    /* Kart stili */
+    .card {
+      background: #ffffff;
+      border-radius: 1rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    /* Input focus efekti */
+    input:focus {
+      outline: none;
+      border-color: #3b82f6;
+      box-shadow: 0 0 5px rgba(59,130,246,0.5);
+    }
+    /* Buton hover efekti */
+    button:hover {
+      box-shadow: 0 4px 12px rgba(59,130,246,0.4);
+    }
+    /* Başlık gradient */
+    h1 {
+      background: linear-gradient(90deg, #3b82f6, #06b6d4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  </style>
 </head>
 <body class="bg-gray-100 p-0 sm:p-6">
 
-<div class="w-full sm:max-w-2xl mx-auto bg-white p-2 sm:p-6 rounded-xl shadow">
+<div class="w-full sm:max-w-2xl mx-auto">
 
-  <!-- Başlık ve görsel -->
-  <h1 class="text-3xl sm:text-4xl font-bold text-center mb-4">YKS Net & Puan Hesaplama</h1>
-  <img src="images/banner.jpg" alt="YKS Net ve Puan Hesaplama" class="w-full h-auto rounded-xl mb-4 object-cover">
+  <!-- Başlık ve Banner -->
+  <div class="card">
+    <h1 class="text-3xl sm:text-4xl font-bold text-center mb-4">YKS Net & Puan Hesaplama</h1>
+    <img src="images/banner.jpg" alt="YKS Net ve Puan Hesaplama" class="w-full h-auto rounded-xl mb-4 object-cover">
+  </div>
+
+  <!-- Banner altı animasyonlu ikonlar -->
+  <div class="flex flex-col sm:flex-row justify-around items-center mt-6 mb-6 gap-4">
+    <div class="flex flex-col items-center p-4 bg-white rounded-xl shadow-lg hover:shadow-xl transition transform hover:-translate-y-1 w-40">
+      <img src="images/icon1.png" alt="Kolay Net Girişi" class="w-16 h-16 mb-2 animate-bounce">
+      <span class="font-semibold text-center">Kolay Net Girişi</span>
+    </div>
+    <div class="flex flex-col items-center p-4 bg-white rounded-xl shadow-lg hover:shadow-xl transition transform hover:-translate-y-1 w-40">
+      <img src="images/icon2.png" alt="Hızlı Puan Hesaplama" class="w-16 h-16 mb-2 animate-bounce">
+      <span class="font-semibold text-center">Hızlı Puan Hesaplama</span>
+    </div>
+    <div class="flex flex-col items-center p-4 bg-white rounded-xl shadow-lg hover:shadow-xl transition transform hover:-translate-y-1 w-40">
+      <img src="images/icon3.png" alt="Mobil Uyumlu" class="w-16 h-16 mb-2 animate-bounce">
+      <span class="font-semibold text-center">Mobil Uyumlu</span>
+    </div>
+  </div>
 
   <!-- TYT Tablosu -->
-  <h2 class="text-2xl sm:text-3xl font-semibold mb-2">TYT</h2>
-  <div class="overflow-x-auto mb-4 w-full">
+  <div class="card overflow-x-auto">
+    <h2 class="text-2xl sm:text-3xl font-semibold mb-2">TYT</h2>
     <table class="w-full border border-gray-300 rounded-lg text-lg">
       <thead class="bg-gray-100">
         <tr>
@@ -55,8 +102,8 @@
   </div>
 
   <!-- AYT Tablosu -->
-  <h2 class="text-2xl sm:text-3xl font-semibold mb-2">AYT</h2>
-  <div class="overflow-x-auto mb-4 w-full">
+  <div class="card overflow-x-auto">
+    <h2 class="text-2xl sm:text-3xl font-semibold mb-2">AYT</h2>
     <table class="w-full border border-gray-300 rounded-lg text-lg">
       <thead class="bg-gray-100">
         <tr>
@@ -90,18 +137,24 @@
     </table>
   </div>
 
-  <!-- Diploma ve buton -->
-  <label class="block mt-4 mb-3 text-lg">Diploma Notu:
-    <input id="diploma" type="number" class="border p-3 w-full rounded text-lg">
-  </label>
+  <!-- Diploma ve Hesapla -->
+  <div class="card">
+    <label class="block mb-3 text-lg">Diploma Notu:
+      <input id="diploma" type="number" class="border p-3 w-full rounded text-lg">
+    </label>
+    <button onclick="hesapla()" class="w-full bg-blue-600 text-white p-3 sm:p-4 rounded hover:bg-blue-700 transition text-lg sm:text-xl">
+      Hesapla
+    </button>
+    <div id="sonuc" class="mt-4 font-semibold text-center text-lg"></div>
+    <canvas id="grafik" class="mt-6 w-full"></canvas>
+  </div>
 
-  <button onclick="hesapla()" class="w-full bg-blue-600 text-white p-3 sm:p-4 rounded hover:bg-blue-700 transition text-lg sm:text-xl">
-    Hesapla
-  </button>
-
-  <div id="sonuc" class="mt-4 font-semibold text-center text-lg"></div>
-  <canvas id="grafik" class="mt-6 w-full"></canvas>
-
+  <hr>
+  <footer class="text-center mt-6 mb-6">
+    <a href="hakkimizda.html">Hakkımızda</a> |
+    <a href="gizlilik.html">Gizlilik Politikası</a> |
+    <a href="iletisim.html">İletişim</a>
+  </footer>
 </div>
 
 <script>
@@ -141,13 +194,6 @@ function hesapla() {
   });
 }
 </script>
-
-<hr>
-<footer class="text-center mt-6 mb-6">
-  <a href="hakkimizda.html">Hakkımızda</a> |
-  <a href="gizlilik.html">Gizlilik Politikası</a> |
-  <a href="iletisim.html">İletişim</a>
-</footer>
 
 </body>
 </html>
