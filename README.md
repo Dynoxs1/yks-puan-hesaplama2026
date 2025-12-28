@@ -16,7 +16,7 @@
 <h1 class="text-2xl font-bold text-center mb-6">YKS Net & Puan Hesaplama</h1>
 <img src="images/banner.jpg"
      alt="YKS Net ve Puan Hesaplama"
-     style="width:100%; height:auto; display:block; border:2px solid red;">
+     class="w-full rounded-xl mb-6">
 
 
 <!-- TYT -->
