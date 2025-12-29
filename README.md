@@ -12,12 +12,12 @@
 </head>
 
 <body class="bg-gray-100">
-<!-- KAÇ NET HESAPLAMA - Gerçek Katsayılarla -->
+<!-- KAÇ NET YAPMALIYIM - Gelişmiş -->
 <div id="netCalculator" style="
     position: fixed;
     top: 270px;
     right: 20px;
-    width: 250px;
+    width: 280px;
     background: #fff3e0;
     border: 1px solid #ccc;
     border-radius: 10px;
@@ -29,10 +29,9 @@
 ">
   <h4 style="margin:0 0 10px 0; font-size:16px;">Kaç Net Yapmalıyım?</h4>
   
-  <label>İstediğin Puan: 
-  <input type="number" id="hedefPuan" style="width:60px;" min="0" max="500">
-</label>
-
+  <label>İstediğin Puan (0-500): 
+    <input type="number" id="hedefPuan" style="width:60px;" min="0" max="500">
+  </label><br/><br/>
   
   <button onclick="hesaplaNet()" style="
       width:100%;
@@ -45,23 +44,45 @@
   ">Hesapla</button>
   
   <div id="netSonuc" style="margin-top:10px;">
-    <p>Yaklaşık TYT Net: <span id="tytNetSonuc">0</span></p>
-    <p>Yaklaşık AYT Net: <span id="aytNetSonuc">0</span></p>
+    <p><b>Yaklaşık TYT Netleri:</b></p>
+    <p>Türkçe: <span id="tytTurkce">0</span></p>
+    <p>Sosyal: <span id="tytSosyal">0</span></p>
+    <p>Matematik: <span id="tytMat">0</span></p>
+    <p>Fen: <span id="tytFen">0</span></p>
+    
+    <p><b>Yaklaşık AYT Netleri:</b></p>
+    <p>Edebiyat: <span id="aytEd">0</span></p>
+    <p>Coğrafya: <span id="aytCog">0</span></p>
+    <p>Matematik: <span id="aytMat">0</span></p>
+    <p>Fen: <span id="aytFen">0</span></p>
   </div>
 </div>
 
 <script>
 function hesaplaNet() {
     let hedef = parseFloat(document.getElementById('hedefPuan').value) || 0;
+    if(hedef < 0) hedef = 0;
+    if(hedef > 500) hedef = 500;
 
-    if (hedef < 0) hedef = 0;
-    if (hedef > 500) hedef = 500;
+    // TYT ağırlıkları örnek (yaklaşık)
+    const tytKatsayi = {turkce:3, sosyal:3, mat:3, fen:3};
+    const tytToplamKatsayi = 12; // toplam katsayı
 
-    const tytNet = Math.round((hedef * 0.4) / 4); 
-    const aytNet = Math.round((hedef * 0.6) / 5); 
+    // AYT ağırlıkları örnek (yaklaşık)
+    const aytKatsayi = {ed:3, cog:3, mat:4, fen:4};
+    const aytToplamKatsayi = 14; // toplam katsayı
 
-    document.getElementById('tytNetSonuc').innerText = tytNet;
-    document.getElementById('aytNetSonuc').innerText = aytNet;
+    // TYT yaklaşık netleri
+    document.getElementById('tytTurkce').innerText = Math.round(hedef*0.4*tytKatsayi.turkce/tytToplamKatsayi/4);
+    document.getElementById('tytSosyal').innerText = Math.round(hedef*0.4*tytKatsayi.sosyal/tytToplamKatsayi/4);
+    document.getElementById('tytMat').innerText = Math.round(hedef*0.4*tytKatsayi.mat/tytToplamKatsayi/4);
+    document.getElementById('tytFen').innerText = Math.round(hedef*0.4*tytKatsayi.fen/tytToplamKatsayi/4);
+
+    // AYT yaklaşık netleri
+    document.getElementById('aytEd').innerText = Math.round(hedef*0.6*aytKatsayi.ed/aytToplamKatsayi/5);
+    document.getElementById('aytCog').innerText = Math.round(hedef*0.6*aytKatsayi.cog/aytToplamKatsayi/5);
+    document.getElementById('aytMat').innerText = Math.round(hedef*0.6*aytKatsayi.mat/aytToplamKatsayi/5);
+    document.getElementById('aytFen').innerText = Math.round(hedef*0.6*aytKatsayi.fen/aytToplamKatsayi/5);
 }
 </script>
 
