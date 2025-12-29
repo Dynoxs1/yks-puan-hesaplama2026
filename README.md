@@ -12,49 +12,49 @@
 </head>
 
 <body class="bg-gray-100">
-<!-- Küçük Web Sitesi İçine Gömmelik Net Hesaplama Kutusu -->
-<div id="miniNetCalculator" style="
-    width: 180px;
+<!-- Web Sitesi İçine Gömmelik Net Hesaplama Kutusu -->
+<div id="netCalculator" style="
+    width: 200px;
     background: linear-gradient(135deg, #ffecd2, #fcb69f);
-    border-radius: 10px;
-    padding: 10px;
+    border-radius: 12px;
+    padding: 15px;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
     font-family: 'Poppins', sans-serif;
-    font-size: 13px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    margin: 20px;
+    font-size: 14px;
+    margin: 20px; /* sayfa akışına göre konum */
 ">
-  <h5 style="margin:0 0 8px 0; font-size:14px; text-align:center;">Kaç Net Yapmalıyım?</h5>
+  <h4 style="margin:0 0 10px 0; font-size:15px; text-align:center;">Kaç Net Yapmalıyım?</h4>
   
   <label>Hedef Puan:<br>
-    <input type="number" id="miniHedefPuan" style="
+    <input type="number" id="hedefPuan" style="
         width:60px;
-        padding:3px;
-        border-radius:5px;
+        padding:4px;
+        border-radius:6px;
         border:1px solid #ccc;
         margin-top:4px;
     " min="0" max="500">
   </label><br><br>
   
-  <button onclick="hesaplaMiniNet()" style="
+  <button onclick="hesaplaNet()" style="
       width:100%;
-      padding:4px;
+      padding:5px;
       border:none;
       background:#ff7e5f;
       color:white;
-      border-radius:6px;
-      font-size:12px;
+      border-radius:8px;
+      font-size:13px;
       transition:0.3s;
   " onmouseover="this.style.background='#feb47b'" onmouseout="this.style.background='#ff7e5f'">Hesapla</button>
   
-  <div id="miniNetSonuc" style="margin-top:8px;">
-    <p>📘 TYT Net: <span id="miniTytNet" style="transition: all 0.3s ease;">0</span></p>
-    <p>📗 AYT Net: <span id="miniAytNet" style="transition: all 0.3s ease;">0</span></p>
+  <div id="netSonuc" style="margin-top:10px;">
+    <p>📘 TYT Net: <span id="tytNetSonuc" style="transition: all 0.3s ease;">0</span></p>
+    <p>📗 AYT Net: <span id="aytNetSonuc" style="transition: all 0.3s ease;">0</span></p>
   </div>
 </div>
 
 <script>
-function hesaplaMiniNet() {
-    let hedefInput = document.getElementById('miniHedefPuan');
+function hesaplaNet() {
+    let hedefInput = document.getElementById('hedefPuan');
     let hedef = parseFloat(hedefInput.value) || 0;
 
     if (hedef < 0) hedef = 0;
@@ -66,11 +66,11 @@ function hesaplaMiniNet() {
     const tytNet = Math.round((hedef * 0.4) / 4); 
     const aytNet = Math.round((hedef * 0.6) / 5); 
 
-    document.getElementById('miniTytNet').innerText = tytNet;
-    document.getElementById('miniAytNet').innerText = aytNet;
+    document.getElementById('tytNetSonuc').innerText = tytNet;
+    document.getElementById('aytNetSonuc').innerText = aytNet;
 
-    let tytEl = document.getElementById('miniTytNet');
-    let aytEl = document.getElementById('miniAytNet');
+    let tytEl = document.getElementById('tytNetSonuc');
+    let aytEl = document.getElementById('aytNetSonuc');
 
     tytEl.style.transform = "scale(1.2)";
     aytEl.style.transform = "scale(1.2)";
