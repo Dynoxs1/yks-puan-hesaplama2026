@@ -74,7 +74,7 @@
 
   <div style="display:flex; gap:2px; align-items:center;"> <!-- gap küçültüldü -->
     <input type="number" id="floatingHedefPuan" placeholder="Hedef" style="
-        flex:1;
+        flex:0 0 90px;
         padding:5px;
         border-radius:5px;
         border:1px solid #ccc;
