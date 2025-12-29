@@ -52,11 +52,18 @@
 
 <script>
 function hesaplaNet() {
-    let hedef = parseFloat(document.getElementById('hedefPuan').value) || 0;
-    if(hedef < 0) hedef = 0;
-    if(hedef > 500) hedef = 500;
+    let hedefInput = document.getElementById('hedefPuan');
+    let hedef = parseFloat(hedefInput.value) || 0;
 
-    // Basit ve yaklaşık gerçek katsayı mantığı
+    // Hedef puanı sınırla
+    if (hedef < 0) hedef = 0;
+    if (hedef > 500) {
+        hedef = 500;
+        hedefInput.value = 500; // input değerini güncelle
+        alert("Hedef puan en fazla 500 olabilir!");
+    }
+
+    // Yaklaşık net hesaplama
     const tytNet = Math.round((hedef * 0.4) / 4); 
     const aytNet = Math.round((hedef * 0.6) / 5); 
 
