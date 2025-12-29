@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>YKS Net ve Puan Hesaplama | TYT AYT 2026</title>
-<meta name="description" content="YKS TYT ve AYT net hesaplama aracı. Doğru yanlış gir, netini ve tahmini puanını hemen öğren. Ücretsiz.">
+<meta name="description" content="YKS TYT ve AYT net hesaplama aracı. Doğru yanlış girerek netini ve tahmini puanını hemen öğren. Ücretsiz.">
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="https://cdn.tailwindcss.com"></script>
@@ -13,15 +13,37 @@
 
 <body class="bg-gray-100">
 
-<!-- 🔵 BANNER (EKRANI KAPLAR, KIRPMA YOK) -->
-<div class="w-full">
+<!-- 🔵 BANNER -->
+<div class="w-full bg-white">
   <img src="images/banner.jpg"
        alt="YKS Net ve Puan Hesaplama"
-       class="w-full h-[40vh] sm:h-[55vh] object-contain bg-white">
+       class="w-full h-[45vh] sm:h-[55vh] object-contain">
 </div>
 
-<!-- 🔵 FORM ALANI -->
-<div class="max-w-2xl mx-auto bg-white p-6 rounded-xl shadow mt-6">
+<!-- 🔵 BANNER ALTİ ÖZELLİKLER -->
+<div class="max-w-4xl mx-auto mt-6 px-4">
+  <div class="grid grid-cols-3 gap-4 text-center">
+
+    <div class="bg-white rounded-xl shadow p-4 transition transform hover:-translate-y-2 hover:shadow-xl">
+      <div class="text-4xl mb-2 animate-bounce">✍️</div>
+      <h3 class="font-semibold">Kolay Net Girişi</h3>
+    </div>
+
+    <div class="bg-white rounded-xl shadow p-4 transition transform hover:-translate-y-2 hover:shadow-xl">
+      <div class="text-4xl mb-2 animate-pulse">⚡</div>
+      <h3 class="font-semibold">Hızlı Puan Hesaplama</h3>
+    </div>
+
+    <div class="bg-white rounded-xl shadow p-4 transition transform hover:-translate-y-2 hover:shadow-xl">
+      <div class="text-4xl mb-2 animate-bounce">📱</div>
+      <h3 class="font-semibold">Mobil Uyumlu</h3>
+    </div>
+
+  </div>
+</div>
+
+<!-- 🔵 HESAPLAMA ALANI -->
+<div class="max-w-2xl mx-auto bg-white p-6 rounded-xl shadow mt-8">
 
 <h1 class="text-2xl font-bold text-center mb-6">
 YKS Net & Puan Hesaplama
@@ -71,7 +93,7 @@ YKS Net & Puan Hesaplama
 
 <!-- DİPLOMA -->
 <label class="block mb-3 font-semibold">
-Diploma Notu (0 - 100):
+Diploma Notu (0 – 100)
 <input id="diploma" type="number" min="0" max="100"
        class="border p-2 w-full mt-1">
 </label>
@@ -82,7 +104,6 @@ Hesapla
 </button>
 
 <div id="sonuc" class="mt-4 text-center font-semibold"></div>
-
 <canvas id="grafik" class="mt-6"></canvas>
 
 </div>
@@ -102,7 +123,7 @@ function net(d, y, max) {
 }
 
 function hesapla() {
-  const alanlar = [
+  const n = [
     net(t_d.value, t_y.value, 40),
     net(m_d.value, m_y.value, 40),
     net(s_d.value, s_y.value, 20),
@@ -113,19 +134,19 @@ function hesapla() {
     net(af_d.value, af_y.value, 20)
   ];
 
-  if (alanlar.includes(null)) {
-    alert("❌ Lütfen doğru–yanlış sayılarını geçerli aralıklarda gir!");
+  if (n.includes(null)) {
+    alert("❌ Doğru–yanlış sayıları geçerli aralıklarda olmalı!");
     return;
   }
 
-  const diploma = Number(diplomaInput = document.getElementById("diploma").value);
+  const diploma = Number(document.getElementById("diploma").value);
   if (diploma < 0 || diploma > 100) {
-    alert("❌ Diploma notu 0 ile 100 arasında olmalı!");
+    alert("❌ Diploma notu 0–100 arasında olmalı!");
     return;
   }
 
-  const tytNet = alanlar.slice(0,4).reduce((a,b)=>a+b,0);
-  const aytNet = alanlar.slice(4).reduce((a,b)=>a+b,0);
+  const tytNet = n.slice(0,4).reduce((a,b)=>a+b,0);
+  const aytNet = n.slice(4).reduce((a,b)=>a+b,0);
 
   const tytPuan = 100 + tytNet * 4 + diploma * 0.12;
   const aytPuan = 100 + aytNet * 5 + diploma * 0.12;
