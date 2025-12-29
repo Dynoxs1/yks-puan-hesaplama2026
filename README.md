@@ -13,7 +13,7 @@
 
 <body class="bg-gray-100">
 <!-- Floating Mini Widget Butonu + Açıklama -->
-<div id="floatingNetButtonWrapper" style="position: fixed; bottom: 20px; right: 20px; z-index: 9999; display: flex; flex-direction: column; align-items: flex-end; gap:4px;">
+<div id="floatingNetButtonWrapper" style="position: fixed; bottom: 90px; right: 20px; z-index: 9999; display: flex; flex-direction: column; align-items: flex-end; gap:4px;">
   
   <!-- Açıklama -->
   <div style="
@@ -37,6 +37,7 @@
       cursor:pointer;
       box-shadow:0 4px 8px rgba(0,0,0,0.2);
       transition:0.3s;
+      position: relative;
   " onmouseover="this.style.background='#feb47b'" onmouseout="this.style.background='#ff7e5f'">📝</button>
 </div>
 
