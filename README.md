@@ -12,27 +12,32 @@
 </head>
 
 <body class="bg-gray-100">
-<!-- Kompakt Net Hesaplama Kutusu -->
-<div id="miniNetCalculator" style="
+<!-- Sağ Alt Mini Floating Widget -->
+<div id="floatingNetWidget" style="
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
     width: 180px;
     background: #ffecd2;
-    border-radius: 10px;
-    padding: 8px;
+    border-radius: 12px;
+    padding: 10px;
     font-family: 'Poppins', sans-serif;
     font-size: 13px;
-    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
-    margin: 20px auto;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    transition: transform 0.2s, box-shadow 0.2s;
+    z-index: 9999;
 ">
-  <div style="display:flex; gap:5px; align-items:center;">
-    <input type="number" id="miniHedefPuan" placeholder="Hedef" style="
+  <div style="display:flex; gap:6px; align-items:center;">
+    <input type="number" id="floatingHedefPuan" placeholder="Hedef" style="
         flex:1;
-        padding:4px;
+        padding:5px;
         border-radius:5px;
         border:1px solid #ccc;
         font-size:13px;
-    ">
-    <button onclick="hesaplaMiniNet()" style="
-        padding:4px 6px;
+        transition: border 0.2s;
+    " onfocus="this.style.borderColor='#ff7e5f'" onblur="this.style.borderColor='#ccc'">
+    <button onclick="hesaplaFloatingNet()" style="
+        padding:5px 8px;
         font-size:13px;
         border:none;
         border-radius:5px;
@@ -42,31 +47,37 @@
         transition:0.3s;
     " onmouseover="this.style.background='#feb47b'" onmouseout="this.style.background='#ff7e5f'">Hesapla</button>
   </div>
-  
-  <div id="miniNetSonuc" style="margin-top:6px;">
-    <div>📘 TYT: <span id="miniTytNet">0</span></div>
-    <div>📗 AYT: <span id="miniAytNet">0</span></div>
+
+  <div id="floatingNetSonuc" style="margin-top:8px;">
+    <div>📘 TYT: <span id="floatingTytNet">0</span></div>
+    <div>📗 AYT: <span id="floatingAytNet">0</span></div>
   </div>
 </div>
 
 <script>
-function hesaplaMiniNet() {
-    let hedef = parseFloat(document.getElementById('miniHedefPuan').value) || 0;
+function hesaplaFloatingNet() {
+    let hedef = parseFloat(document.getElementById('floatingHedefPuan').value) || 0;
     if (hedef < 0) hedef = 0;
     if (hedef > 500) hedef = 500;
 
     const tytNet = Math.round((hedef * 0.4) / 4);
     const aytNet = Math.round((hedef * 0.6) / 5);
 
-    document.getElementById('miniTytNet').innerText = tytNet;
-    document.getElementById('miniAytNet').innerText = aytNet;
+    document.getElementById('floatingTytNet').innerText = tytNet;
+    document.getElementById('floatingAytNet').innerText = aytNet;
 
-    let tytEl = document.getElementById('miniTytNet');
-    let aytEl = document.getElementById('miniAytNet');
+    let tytEl = document.getElementById('floatingTytNet');
+    let aytEl = document.getElementById('floatingAytNet');
 
+    // Hafif animasyon
     tytEl.style.transform = "scale(1.2)";
     aytEl.style.transform = "scale(1.2)";
-    setTimeout(()=>{ tytEl.style.transform="scale(1)"; aytEl.style.transform="scale(1)"; },300);
+    setTimeout(()=>{ tytEl.style.transform="scale(1)"; aytEl.style.transform="scale(1)"; },250);
+
+    // Widget "pop" efekti
+    let widget = document.getElementById('floatingNetWidget');
+    widget.style.transform = "scale(1.03)";
+    setTimeout(()=>{ widget.style.transform="scale(1)"; },250);
 }
 </script>
 
