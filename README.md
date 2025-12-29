@@ -13,30 +13,26 @@
 
 <body class="bg-gray-100">
 <style>
-<!-- Sabit Kare Kutucuk -->
+<!-- Sabit Kare Kutucuk - Sağ Üst Köşe -->
 <style>
 #netBox {
-    position: fixed; /* sabit kutu */
-    top: 50px;
-    right: 50px;
-    width: 220px;
-    height: 220px; /* kare şeklinde */
-    background: linear-gradient(135deg, #ffecd2, #fcb69f);
+    position: fixed; /* ekran kaydırılsa bile sabit */
+    top: 20px;
+    right: 20px;
+    width: 150px;
+    height: 150px; /* tam kare */
+    background: #ffecd2;
+    border: 2px solid #ff7e5f;
     border-radius: 12px;
-    box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     font-family: 'Poppins', sans-serif;
-    padding: 15px;
+    padding: 10px;
     box-sizing: border-box;
     z-index: 9999;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-}
-
-#netBox h4 {
-    margin: 0 0 10px 0;
     text-align: center;
-    font-size: 16px;
 }
 
 #netBox input {
@@ -44,66 +40,58 @@
     padding: 4px;
     border-radius: 6px;
     border: 1px solid #ccc;
-    margin-top: 4px;
 }
 
 #netBox button {
-    width: 100%;
-    padding: 5px;
+    padding: 4px;
     border: none;
-    border-radius: 8px;
+    border-radius: 6px;
     background: #ff7e5f;
     color: white;
-    font-size: 13px;
+    font-size: 12px;
+    cursor: pointer;
     transition: 0.3s;
 }
-
 #netBox button:hover {
     background: #feb47b;
 }
 
-#netBox p {
-    margin: 5px 0;
-}
-
 #netBox span {
+    font-weight: bold;
     transition: all 0.3s ease;
 }
 
 /* Mobil uyumlu */
 @media screen and (max-width: 500px) {
     #netBox {
-        width: 160px;
-        height: 160px;
-        top: 20px;
-        right: 20px;
-        padding: 10px;
+        width: 120px;
+        height: 120px;
+        top: 10px;
+        right: 10px;
+        padding: 8px;
         font-size: 12px;
     }
     #netBox input {
-        width: 50px;
+        width: 45px;
         padding: 3px;
     }
     #netBox button {
-        padding: 4px;
-        font-size: 12px;
+        padding: 3px;
+        font-size: 11px;
     }
 }
 </style>
 
 <div id="netBox">
-    <h4>Kaç Net Yapmalıyım?</h4>
-    
     <div>
-        <label>Hedef Puan:<br>
+        <label>Hedef:<br>
             <input type="number" id="hedefPuan" min="0" max="500">
-        </label><br><br>
-        <button onclick="hesaplaNet()">Hesapla</button>
+        </label>
     </div>
-    
-    <div id="netSonuc">
-        <p>📘 TYT Net: <span id="tytNetSonuc">0</span></p>
-        <p>📗 AYT Net: <span id="aytNetSonuc">0</span></p>
+    <button onclick="hesaplaNet()">Hesapla</button>
+    <div>
+        <p>📘 TYT: <span id="tytNetSonuc">0</span></p>
+        <p>📗 AYT: <span id="aytNetSonuc">0</span></p>
     </div>
 </div>
 
