@@ -12,78 +12,75 @@
 </head>
 
 <body class="bg-gray-100">
-<style>
-<div id="puanKutusu">
-  <input type="number" id="hedefPuan" placeholder="Hedef">
-  <button onclick="hesapla()">Hesapla</button>
-  <div class="netler">
-    <div>TYT: <span id="tytNet">0</span></div>
-    <div>AYT: <span id="aytNet">0</span></div>
+<!-- Şık Kaç Net Yapmalıyım Paneli -->
+<div id="netCalculator" style="
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 200px;
+    background: linear-gradient(135deg, #ffecd2, #fcb69f);
+    border-radius: 12px;
+    padding: 15px;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    z-index: 9999;
+">
+  <h4 style="margin:0 0 10px 0; font-size:15px; text-align:center;">Kaç Net Yapmalıyım?</h4>
+  
+  <label>Hedef Puan:<br>
+    <input type="number" id="hedefPuan" style="
+        width:60px;
+        padding:4px;
+        border-radius:6px;
+        border:1px solid #ccc;
+        margin-top:4px;
+    " min="0" max="500">
+  </label><br><br>
+  
+  <button onclick="hesaplaNet()" style="
+      width:100%;
+      padding:5px;
+      border:none;
+      background:#ff7e5f;
+      color:white;
+      border-radius:8px;
+      font-size:13px;
+      transition:0.3s;
+  " onmouseover="this.style.background='#feb47b'" onmouseout="this.style.background='#ff7e5f'">Hesapla</button>
+  
+  <div id="netSonuc" style="margin-top:10px;">
+    <p>📘 TYT Net: <span id="tytNetSonuc" style="transition: all 0.3s ease;">0</span></p>
+    <p>📗 AYT Net: <span id="aytNetSonuc" style="transition: all 0.3s ease;">0</span></p>
   </div>
 </div>
 
-<style>
-  #puanKutusu {
-    position: fixed;
-    top: 16px;
-    right: 16px;
-    width: 160px;
-    background: #f0f0f0;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    z-index: 9999; /* en üstte görünmesi için */
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    font-family: sans-serif;
-    font-size: 13px;
-    color: #333;
-  }
-
-  .inputs {
-    display: flex;
-    gap: 4px;
-  }
-
-  .inputs input {
-    flex: 1;
-    padding: 4px;
-    font-size: 13px;
-  }
-
-  .inputs button {
-    padding: 4px 6px;
-    font-size: 13px;
-    cursor: pointer;
-    background: #4CAF50;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-  }
-
-  .netler div {
-    margin-top: 2px;
-  }
-
-  @media (max-width: 500px) {
-    #puanKutusu {
-      width: 140px;
-      padding: 6px;
-      font-size: 12px;
-    }
-    .inputs input, .inputs button {
-      font-size: 12px;
-      padding: 3px 5px;
-    }
-  }
-</style>
-
 <script>
-function hesapla() {
-  const hedef = Number(document.getElementById('hedefPuan').value) || 0;
-  document.getElementById('tytNet').innerText = Math.round(hedef * 0.4);
-  document.getElementById('aytNet').innerText = Math.round(hedef * 0.6);
+function hesaplaNet() {
+    let hedefInput = document.getElementById('hedefPuan');
+    let hedef = parseFloat(hedefInput.value) || 0;
+
+    // Hedef puanı sınırla
+    if (hedef < 0) hedef = 0;
+    if (hedef > 500) {
+        hedef = 500;
+        hedefInput.value = 500; // input değerini güncelle
+    }
+
+    // Yaklaşık net hesaplama
+    const tytNet = Math.round((hedef * 0.4) / 4); 
+    const aytNet = Math.round((hedef * 0.6) / 5); 
+
+    // Netleri güncelle ve animasyon ekle
+    let tytEl = document.getElementById('tytNetSonuc');
+    let aytEl = document.getElementById('aytNetSonuc');
+
+    tytEl.innerText = tytNet;
+    aytEl.innerText = aytNet;
+
+    tytEl.style.transform = "scale(1.2)";
+    aytEl.style.transform = "scale(1.2)";
+    setTimeout(()=>{ tytEl.style.transform="scale(1)"; aytEl.style.transform="scale(1)"; },300);
 }
 </script>
 
