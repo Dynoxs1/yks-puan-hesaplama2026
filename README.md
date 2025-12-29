@@ -13,124 +13,91 @@
 
 <body class="bg-gray-100">
 <style>
-<!-- Minimal Sağ Üst Kare Kutucuk - Mobil ve Desktop Uyumu -->
-<style>
-#netBox {
-    position: fixed;
-    top: 15px;
-    right: 15px;
-    width: 150px;
-    height: 140px;
-    background: #f5f5f5; /* soft arka plan */
-    border-radius: 10px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    font-family: 'Poppins', sans-serif;
-    font-size: 13px;
-    padding: 10px;
-    box-sizing: border-box;
-    z-index: 9999;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    text-align: center;
-}
-
-#netBox .inputArea {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 5px;
-}
-
-#netBox input {
-    width: 70px;
-    padding: 3px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    text-align: center;
-    font-size: 13px;
-}
-
-#netBox button {
-    padding: 4px 6px;
-    border: none;
-    border-radius: 5px;
-    background: #4caf50;
-    color: white;
-    font-size: 12px;
-    cursor: pointer;
-    transition: 0.2s;
-}
-#netBox button:hover {
-    background: #45a049;
-}
-
-#netBox p {
-    margin: 2px 0;
-}
-
-#netBox span {
-    font-weight: bold;
-    transition: all 0.2s ease;
-}
-
-/* Mobil uyumlu */
-@media screen and (max-width: 500px) {
-    #netBox {
-        width: 120px;
-        height: 130px;
-        top: 10px;
-        right: 10px;
-        padding: 8px;
-        font-size: 12px;
-    }
-    #netBox input {
-        width: 50px;
-        padding: 2px;
-        font-size: 12px;
-    }
-    #netBox button {
-        padding: 3px;
-        font-size: 11px;
-    }
-}
-</style>
-
-<div id="netBox">
-    <div class="inputArea">
-        <input type="number" id="hedefPuan" placeholder="Hedef" min="0" max="500">
-        <button onclick="hesaplaNet()">Hesapla</button>
-    </div>
-    <div>
-        <p>📘 TYT: <span id="tytNetSonuc">0</span></p>
-        <p>📗 AYT: <span id="aytNetSonuc">0</span></p>
-    </div>
+<!-- Minimal Sağ Üst Kutucuk -->
+<div id="puanKutusu">
+  <div class="inputs">
+    <input type="number" id="hedefPuan" placeholder="Hedef Puan">
+    <button onclick="hesapla()">Hesapla</button>
+  </div>
+  <div class="netler">
+    <div>TYT Net: <span id="tytNet">0</span></div>
+    <div>AYT Net: <span id="aytNet">0</span></div>
+  </div>
 </div>
 
-<script>
-function hesaplaNet() {
-    let hedefInput = document.getElementById('hedefPuan');
-    let hedef = parseFloat(hedefInput.value) || 0;
+<style>
+  /* Genel kutu ayarları */
+  #puanKutusu {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    width: 200px;
+    background: #ffffffcc; /* yarı saydam soft beyaz */
+    backdrop-filter: blur(10px);
+    padding: 12px;
+    border-radius: 14px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 14px;
+    color: #333;
+    z-index: 9999;
+  }
 
-    if (hedef < 0) hedef = 0;
-    if (hedef > 500) {
-        hedef = 500;
-        hedefInput.value = 500;
+  /* Input ve buton yan yana */
+  .inputs {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 10px;
+  }
+
+  .inputs input {
+    flex: 1;
+    padding: 6px 8px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+  }
+
+  .inputs button {
+    padding: 6px 10px;
+    background: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+
+  .inputs button:hover {
+    background: #45a049;
+  }
+
+  /* Netler bölümü */
+  .netler div {
+    margin-top: 4px;
+  }
+
+  /* Mobil uyumlu */
+  @media (max-width: 500px) {
+    #puanKutusu {
+      width: 160px;
+      padding: 10px;
+      font-size: 12px;
     }
+    .inputs button {
+      padding: 6px 8px;
+      font-size: 12px;
+    }
+  }
+</style>
 
-    const tytNet = Math.round((hedef * 0.4) / 4);
-    const aytNet = Math.round((hedef * 0.6) / 5);
-
-    let tytEl = document.getElementById('tytNetSonuc');
-    let aytEl = document.getElementById('aytNetSonuc');
-
-    tytEl.innerText = tytNet;
-    aytEl.innerText = aytNet;
-
-    tytEl.style.transform = "scale(1.2)";
-    aytEl.style.transform = "scale(1.2)";
-    setTimeout(()=>{ tytEl.style.transform="scale(1)"; aytEl.style.transform="scale(1)"; },200);
-}
+<script>
+  function hesapla() {
+    const hedef = document.getElementById('hedefPuan').value;
+    // Örnek hesaplama, sen kendi formüllerini buraya ekleyebilirsin
+    document.getElementById('tytNet').innerText = Math.floor(hedef * 0.4);
+    document.getElementById('aytNet').innerText = Math.floor(hedef * 0.6);
+  }
 </script>
 
 <!-- 🔵 BANNER -->
