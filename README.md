@@ -180,4 +180,3 @@ function hesapla() {
 </script>
 
 </body><body class="bg-gradient-to-br from-blue-50 to-gray-100 min-h-screen p-4">
-</html>
