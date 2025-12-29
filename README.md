@@ -12,6 +12,56 @@
 </head>
 
 <body class="bg-gray-100">
+<!-- KAÇ NET HESAPLAMA - Gerçek Katsayılarla -->
+<div id="netCalculator" style="
+    position: fixed;
+    top: 270px;
+    right: 20px;
+    width: 250px;
+    background: #fff3e0;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    font-family: sans-serif;
+    font-size: 14px;
+    z-index: 9999;
+">
+  <h4 style="margin:0 0 10px 0; font-size:16px;">Kaç Net Yapmalıyım?</h4>
+  
+  <label>İstediğin Puan: <input type="number" id="hedefPuan" style="width:60px;"></label><br/><br/>
+  
+  <button onclick="hesaplaNet()" style="
+      width:100%;
+      padding:5px;
+      border:none;
+      background:#FF9800;
+      color:white;
+      border-radius:5px;
+      cursor:pointer;
+  ">Hesapla</button>
+  
+  <div id="netSonuc" style="margin-top:10px;">
+    <p>Yaklaşık TYT Net: <span id="tytNetSonuc">0</span></p>
+    <p>Yaklaşık AYT Net: <span id="aytNetSonuc">0</span></p>
+  </div>
+</div>
+
+<script>
+function hesaplaNet() {
+    const hedef = parseFloat(document.getElementById('hedefPuan').value) || 0;
+
+    // YKS Katsayılarına göre yaklaşık netler
+    // TYT: %40, AYT: %60 ağırlık
+    // TYT katsayısı 4, AYT katsayısı 5 (örnek)
+    const tytNet = Math.round((hedef * 0.4) / 4); 
+    const aytNet = Math.round((hedef * 0.6) / 5); 
+
+    document.getElementById('tytNetSonuc').innerText = tytNet;
+    document.getElementById('aytNetSonuc').innerText = aytNet;
+}
+</script>
+
 
 <!-- 🔵 BANNER -->
 <div class="w-full bg-white">
