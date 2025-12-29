@@ -13,20 +13,18 @@
 
 <body class="bg-gray-100">
 <style>
-<!-- Şık ve Mobil Uyumlu Kaç Net Yapmalıyım Paneli -->
+<!-- Sabit Olmayan, Kutucuk Panel -->
 <style>
 #netCalculator {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    width: 200px;
+    position: relative; /* artık sabit değil */
+    width: 220px;
     background: linear-gradient(135deg, #ffecd2, #fcb69f);
     border-radius: 12px;
     padding: 15px;
     box-shadow: 0 6px 12px rgba(0,0,0,0.15);
     font-family: 'Poppins', sans-serif;
     font-size: 14px;
-    z-index: 9999;
+    margin: 20px; /* sayfa içinde biraz boşluk */
 }
 #netCalculator button {
     width:100%;
@@ -52,14 +50,13 @@
     transition: all 0.3s ease;
 }
 
-/* Mobilde küçültme */
+/* Mobil uyumlu */
 @media screen and (max-width: 500px) {
     #netCalculator {
         width: 150px;
         padding: 10px;
         font-size: 12px;
-        top: 10px;
-        right: 10px;
+        margin: 10px;
     }
     #netCalculator button {
         padding: 4px;
@@ -92,18 +89,15 @@ function hesaplaNet() {
     let hedefInput = document.getElementById('hedefPuan');
     let hedef = parseFloat(hedefInput.value) || 0;
 
-    // Hedef puanı sınırla
     if (hedef < 0) hedef = 0;
     if (hedef > 500) {
         hedef = 500;
         hedefInput.value = 500;
     }
 
-    // Yaklaşık net hesaplama
     const tytNet = Math.round((hedef * 0.4) / 4); 
     const aytNet = Math.round((hedef * 0.6) / 5); 
 
-    // Netleri güncelle ve animasyon ekle
     let tytEl = document.getElementById('tytNetSonuc');
     let aytEl = document.getElementById('aytNetSonuc');
 
