@@ -13,7 +13,7 @@
 
 <body class="bg-gray-100">
 <!-- Floating Mini Widget Butonu + Açıklama -->
-<div id="floatingNetButtonWrapper" style="position: fixed; bottom: 90px; right: 15px; z-index: 9999; display: flex; flex-direction: column; align-items: flex-end; gap:4px;">
+<div id="floatingNetButtonWrapper" style="position: fixed; bottom: 90px; left: 10px; z-index: 9999; display: flex; flex-direction: column; align-items: flex-start; gap:4px;">
   
   <!-- Açıklama -->
   <div style="
@@ -45,7 +45,7 @@
 <div id="floatingNetWidget" style="
     position: fixed;
     bottom: 80px;
-    right: 15px;
+    left: 10px;
     width: 180px;
     background: #ffecd2;
     border-radius: 12px;
@@ -142,10 +142,11 @@ function hesaplaFloatingNet() {
 @media (max-width: 768px) {
     #floatingNetWidget {
         width: 160px;
-        right: 5px; /* tamamen sola yaklaştır */
+        left: 5px; /* tamamen sola yasla */
     }
     #floatingNetButtonWrapper {
-        right: 5px; /* ikon da sola kayacak */
+        left: 5px; /* ikon da sola kayacak */
+        align-items: flex-start;
     }
 }
 </style>
