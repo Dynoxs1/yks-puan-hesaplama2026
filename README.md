@@ -12,49 +12,41 @@
 </head>
 
 <body class="bg-gray-100">
-<!-- KAÇ NET YAPMALIYIM - Gelişmiş -->
+<!-- KAÇ NET YAPMALIYIM - Kompakt ve Doğru Yaklaşık -->
 <div id="netCalculator" style="
     position: fixed;
-    top: 270px;
+    top: 20px;
     right: 20px;
-    width: 280px;
+    width: 180px;
     background: #fff3e0;
     border: 1px solid #ccc;
-    border-radius: 10px;
-    padding: 15px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
     font-family: sans-serif;
-    font-size: 14px;
+    font-size: 13px;
     z-index: 9999;
 ">
-  <h4 style="margin:0 0 10px 0; font-size:16px;">Kaç Net Yapmalıyım?</h4>
+  <h4 style="margin:0 0 8px 0; font-size:14px;">Kaç Net Yapmalıyım?</h4>
   
-  <label>İstediğin Puan (0-500): 
+  <label>Hedef Puan:<br>
     <input type="number" id="hedefPuan" style="width:60px;" min="0" max="500">
-  </label><br/><br/>
+  </label><br><br>
   
   <button onclick="hesaplaNet()" style="
       width:100%;
-      padding:5px;
+      padding:4px;
       border:none;
       background:#FF9800;
       color:white;
       border-radius:5px;
       cursor:pointer;
+      font-size:13px;
   ">Hesapla</button>
   
-  <div id="netSonuc" style="margin-top:10px;">
-    <p><b>Yaklaşık TYT Netleri:</b></p>
-    <p>Türkçe: <span id="tytTurkce">0</span></p>
-    <p>Sosyal: <span id="tytSosyal">0</span></p>
-    <p>Matematik: <span id="tytMat">0</span></p>
-    <p>Fen: <span id="tytFen">0</span></p>
-    
-    <p><b>Yaklaşık AYT Netleri:</b></p>
-    <p>Edebiyat: <span id="aytEd">0</span></p>
-    <p>Coğrafya: <span id="aytCog">0</span></p>
-    <p>Matematik: <span id="aytMat">0</span></p>
-    <p>Fen: <span id="aytFen">0</span></p>
+  <div id="netSonuc" style="margin-top:8px;">
+    <p>TYT Net: <span id="tytNetSonuc">0</span></p>
+    <p>AYT Net: <span id="aytNetSonuc">0</span></p>
   </div>
 </div>
 
@@ -64,26 +56,14 @@ function hesaplaNet() {
     if(hedef < 0) hedef = 0;
     if(hedef > 500) hedef = 500;
 
-    // TYT ağırlıkları örnek (yaklaşık)
-    const tytKatsayi = {turkce:3, sosyal:3, mat:3, fen:3};
-    const tytToplamKatsayi = 12; // toplam katsayı
+    // Basit ve yaklaşık gerçek katsayı mantığı
+    const tytNet = Math.round((hedef * 0.4) / 4); 
+    const aytNet = Math.round((hedef * 0.6) / 5); 
 
-    // AYT ağırlıkları örnek (yaklaşık)
-    const aytKatsayi = {ed:3, cog:3, mat:4, fen:4};
-    const aytToplamKatsayi = 14; // toplam katsayı
-
-    // TYT yaklaşık netleri
-    document.getElementById('tytTurkce').innerText = Math.round(hedef*0.4*tytKatsayi.turkce/tytToplamKatsayi/4);
-    document.getElementById('tytSosyal').innerText = Math.round(hedef*0.4*tytKatsayi.sosyal/tytToplamKatsayi/4);
-    document.getElementById('tytMat').innerText = Math.round(hedef*0.4*tytKatsayi.mat/tytToplamKatsayi/4);
-    document.getElementById('tytFen').innerText = Math.round(hedef*0.4*tytKatsayi.fen/tytToplamKatsayi/4);
-
-    // AYT yaklaşık netleri
-    document.getElementById('aytEd').innerText = Math.round(hedef*0.6*aytKatsayi.ed/aytToplamKatsayi/5);
-    document.getElementById('aytCog').innerText = Math.round(hedef*0.6*aytKatsayi.cog/aytToplamKatsayi/5);
-    document.getElementById('aytMat').innerText = Math.round(hedef*0.6*aytKatsayi.mat/aytToplamKatsayi/5);
-    document.getElementById('aytFen').innerText = Math.round(hedef*0.6*aytKatsayi.fen/aytToplamKatsayi/5);
+    document.getElementById('tytNetSonuc').innerText = tytNet;
+    document.getElementById('aytNetSonuc').innerText = aytNet;
 }
+
 </script>
 
 <!-- 🔵 BANNER -->
