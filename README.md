@@ -12,41 +12,46 @@
 </head>
 
 <body class="bg-gray-100">
-<!-- KAÇ NET YAPMALIYIM - Kompakt ve Doğru Yaklaşık -->
+<!-- Şık Kaç Net Yapmalıyım Paneli -->
 <div id="netCalculator" style="
     position: fixed;
     top: 20px;
     right: 20px;
-    width: 180px;
-    background: #fff3e0;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 10px;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
-    font-family: sans-serif;
-    font-size: 13px;
+    width: 200px;
+    background: linear-gradient(135deg, #ffecd2, #fcb69f);
+    border-radius: 12px;
+    padding: 15px;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
     z-index: 9999;
 ">
-  <h4 style="margin:0 0 8px 0; font-size:14px;">Kaç Net Yapmalıyım?</h4>
+  <h4 style="margin:0 0 10px 0; font-size:15px; text-align:center;">Kaç Net Yapmalıyım?</h4>
   
   <label>Hedef Puan:<br>
-    <input type="number" id="hedefPuan" style="width:60px;" min="0" max="500">
+    <input type="number" id="hedefPuan" style="
+        width:60px;
+        padding:4px;
+        border-radius:6px;
+        border:1px solid #ccc;
+        margin-top:4px;
+    " min="0" max="500">
   </label><br><br>
   
   <button onclick="hesaplaNet()" style="
       width:100%;
-      padding:4px;
+      padding:5px;
       border:none;
-      background:#FF9800;
+      background:#ff7e5f;
       color:white;
-      border-radius:5px;
-      cursor:pointer;
+      border-radius:8px;
       font-size:13px;
-  ">Hesapla</button>
+      transition:0.3s;
+  " onmouseover="this.style.background='#feb47b'" onmouseout="this.style.background='#ff7e5f'">Hesapla</button>
   
-  <div id="netSonuc" style="margin-top:8px;">
-    <p>TYT Net: <span id="tytNetSonuc">0</span></p>
-    <p>AYT Net: <span id="aytNetSonuc">0</span></p>
+  <div id="netSonuc" style="margin-top:10px;">
+    <p>📘 TYT Net: <span id="tytNetSonuc" style="transition: all 0.3s ease;">0</span></p>
+    <p>📗 AYT Net: <span id="aytNetSonuc" style="transition: all 0.3s ease;">0</span></p>
   </div>
 </div>
 
@@ -60,15 +65,22 @@ function hesaplaNet() {
     if (hedef > 500) {
         hedef = 500;
         hedefInput.value = 500; // input değerini güncelle
-        alert("Hedef puan en fazla 500 olabilir!");
     }
 
     // Yaklaşık net hesaplama
     const tytNet = Math.round((hedef * 0.4) / 4); 
     const aytNet = Math.round((hedef * 0.6) / 5); 
 
-    document.getElementById('tytNetSonuc').innerText = tytNet;
-    document.getElementById('aytNetSonuc').innerText = aytNet;
+    // Netleri güncelle ve animasyon ekle
+    let tytEl = document.getElementById('tytNetSonuc');
+    let aytEl = document.getElementById('aytNetSonuc');
+
+    tytEl.innerText = tytNet;
+    aytEl.innerText = aytNet;
+
+    tytEl.style.transform = "scale(1.2)";
+    aytEl.style.transform = "scale(1.2)";
+    setTimeout(()=>{ tytEl.style.transform="scale(1)"; aytEl.style.transform="scale(1)"; },300);
 }
 
 </script>
