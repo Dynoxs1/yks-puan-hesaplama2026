@@ -45,8 +45,8 @@
 <div id="floatingNetWidget" style="
     position: fixed;
     bottom: 80px;
-    right: 10px;
-    width: 180px; /* genişliği küçülttük */
+    right: 5px; /* burayı küçülttük, sola yaklaştırdık */
+    width: 180px;
     background: #ffecd2;
     border-radius: 12px;
     padding: 10px;
@@ -59,6 +59,7 @@
     transition: transform 0.2s, opacity 0.2s;
     z-index: 9999;
 ">
+
   <!-- Kapatma Butonu -->
   <button onclick="toggleFloatingWidget()" style="
       position: absolute;
