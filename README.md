@@ -29,7 +29,10 @@
 ">
   <h4 style="margin:0 0 10px 0; font-size:16px;">Kaç Net Yapmalıyım?</h4>
   
-  <label>İstediğin Puan: <input type="number" id="hedefPuan" style="width:60px;"></label><br/><br/>
+<label>İstediğin Puan: 
+  <input type="number" id="hedefPuan" style="width:60px;" min="0" max="500">
+</label>
+
   
   <button onclick="hesaplaNet()" style="
       width:100%;
