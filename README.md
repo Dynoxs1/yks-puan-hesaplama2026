@@ -137,8 +137,8 @@ function hesapla() {
     net(f_d.value, f_y.value, 20),
     net(am_d.value, am_y.value, 40),
     net(ae_d.value, ae_y.value, 40),
-    net(as_d.value, as_y.value, 20),
-    net(af_d.value, af_y.value, 20)
+    net(as_d.value, as_y.value, 40),
+    net(af_d.value, af_y.value, 40)
   ];
 
   if (n.includes(null)) {
