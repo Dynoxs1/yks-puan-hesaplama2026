@@ -12,20 +12,7 @@
 </head>
 
 <body class="bg-gray-100">
-<!-- Şık Kaç Net Yapmalıyım Paneli -->
-<div id="netCalculator" style="
-    position: fixed; /* ekranın sağ üstüne sabit */
-    top: 20px;
-    right: 20px;
-    width: 200px;
-    background: linear-gradient(135deg, #ffecd2, #fcb69f);
-    border-radius: 12px;
-    padding: 15px;
-    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-    font-family: 'Poppins', sans-serif;
-    font-size: 14px;
-    z-index: 9999;
-">
+<!-- Şık Kaç Net Yapmalıyım Paneli --> <div id="netCalculator" style=" position: fixed; top: 20px; right: 20px; width: 200px; background: linear-gradient(135deg, #ffecd2, #fcb69f); border-radius: 12px; padding: 15px; box-shadow: 0 6px 12px rgba(0,0,0,0.15); font-family: 'Poppins', sans-serif; font-size: 14px; z-index: 9999; ">
 </div>
 
   <h4 style="margin:0 0 10px 0; font-size:15px; text-align:center;">Kaç Net Yapmalıyım?</h4>
