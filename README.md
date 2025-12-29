@@ -13,7 +13,7 @@
 
 <body class="bg-gray-100">
 <!-- Floating Mini Widget Butonu + Açıklama -->
-<div id="floatingNetButtonWrapper" style="position: fixed; bottom: 90px; right: 10px; z-index: 9999; display: flex; flex-direction: column; align-items: flex-end; gap:4px;">
+<div id="floatingNetButtonWrapper" style="position: fixed; bottom: 90px; right: 15px; z-index: 9999; display: flex; flex-direction: column; align-items: flex-end; gap:4px;">
   
   <!-- Açıklama -->
   <div style="
@@ -45,7 +45,7 @@
 <div id="floatingNetWidget" style="
     position: fixed;
     bottom: 80px;
-    right: 5px; /* burayı küçülttük, sola yaklaştırdık */
+    right: 15px;
     width: 180px;
     background: #ffecd2;
     border-radius: 12px;
@@ -59,7 +59,6 @@
     transition: transform 0.2s, opacity 0.2s;
     z-index: 9999;
 ">
-
   <!-- Kapatma Butonu -->
   <button onclick="toggleFloatingWidget()" style="
       position: absolute;
@@ -137,6 +136,19 @@ function hesaplaFloatingNet() {
     setTimeout(()=>{ tytEl.style.transform="scale(1)"; aytEl.style.transform="scale(1)"; },250);
 }
 </script>
+
+<style>
+/* Responsive: Mobilde widget sola kayar ve genişliği küçülür */
+@media (max-width: 768px) {
+    #floatingNetWidget {
+        width: 160px;
+        right: 5px; /* tamamen sola yaklaştır */
+    }
+    #floatingNetButtonWrapper {
+        right: 5px; /* ikon da sola kayacak */
+    }
+}
+</style>
 
 <!-- 🔵 BANNER -->
 <div class="w-full bg-white">
