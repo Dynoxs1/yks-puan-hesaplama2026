@@ -114,6 +114,52 @@ Hesapla
 <canvas id="grafik" class="mt-6"></canvas>
 
 </div>
+<script>
+function net(d, y) {
+  return d - (y / 4);
+}
+
+function hesapla() {
+  const tNet = net(t_dogru.value, t_yanlis.value);
+  const mNet = net(m_dogru.value, m_yanlis.value);
+  const sNet = net(s_dogru.value, s_yanlis.value);
+  const fNet = net(f_dogru.value, f_yanlis.value);
+
+  // Önceki grafik varsa sil
+  if (window.netChart) {
+    window.netChart.destroy();
+  }
+
+  const ctx = document.getElementById("netGrafik").getContext("2d");
+
+  window.netChart = new Chart(ctx, {
+    type: "bar",
+    data: {
+      labels: ["Türkçe", "Matematik", "Sosyal", "Fen"],
+      datasets: [{
+        label: "Netler",
+        data: [tNet, mNet, sNet, fNet],
+        backgroundColor: [
+          "#3b82f6",
+          "#22c55e",
+          "#f59e0b",
+          "#ef4444"
+        ],
+        borderRadius: 8
+      }]
+    },
+    options: {
+      responsive: true,
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+}
+</script>
+
 
 <!-- FOOTER -->
 <footer class="text-center text-sm mt-8 mb-4">
