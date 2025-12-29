@@ -52,19 +52,18 @@
 
 <script>
 function hesaplaNet() {
-    const hedef = parseFloat(document.getElementById('hedefPuan').value) || 0;
+    let hedef = parseFloat(document.getElementById('hedefPuan').value) || 0;
 
-    // YKS Katsayılarına göre yaklaşık netler
-    // TYT: %40, AYT: %60 ağırlık
-    // TYT katsayısı 4, AYT katsayısı 5 (örnek)
+    if (hedef < 0) hedef = 0;
+    if (hedef > 500) hedef = 500;
+
     const tytNet = Math.round((hedef * 0.4) / 4); 
     const aytNet = Math.round((hedef * 0.6) / 5); 
 
     document.getElementById('tytNetSonuc').innerText = tytNet;
     document.getElementById('aytNetSonuc').innerText = aytNet;
 }
-</script>
-
+>
 
 <!-- 🔵 BANNER -->
 <div class="w-full bg-white">
