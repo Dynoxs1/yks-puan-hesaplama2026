@@ -45,7 +45,7 @@
 <div id="floatingNetWidget" style="
     position: fixed;
     bottom: 80px;
-    right: 10px;
+    right: 50px;
     width: 180px;
     background: #ffecd2;
     border-radius: 12px;
