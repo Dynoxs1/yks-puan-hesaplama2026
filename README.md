@@ -13,18 +13,17 @@
 
 <body class="bg-gray-100">
 <style>
-<!-- Sabit Kare Kutucuk - Sağ Üst Köşe -->
+<!-- Sağ Tarafa Sabit, Şık Kare Kutucuk -->
 <style>
 #netBox {
-    position: fixed; /* ekran kaydırılsa bile sabit */
-    top: 20px;
-    right: 20px;
+    position: fixed; /* sayfada sabit */
+    top: 50px;
+    right: 20px; /* sağ tarafa yasla */
     width: 150px;
-    height: 150px; /* tam kare */
-    background: #ffecd2;
-    border: 2px solid #ff7e5f;
+    height: 150px; /* kare şeklinde */
+    background: linear-gradient(135deg, #ffecd2, #fcb69f); /* şık renkli arka plan */
     border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
     font-family: 'Poppins', sans-serif;
     padding: 10px;
     box-sizing: border-box;
@@ -39,7 +38,8 @@
     width: 60px;
     padding: 4px;
     border-radius: 6px;
-    border: 1px solid #ccc;
+    border: none; /* çerçeve kaldırıldı */
+    text-align: center;
 }
 
 #netBox button {
@@ -66,7 +66,7 @@
     #netBox {
         width: 120px;
         height: 120px;
-        top: 10px;
+        top: 20px;
         right: 10px;
         padding: 8px;
         font-size: 12px;
