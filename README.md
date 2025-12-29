@@ -12,8 +12,19 @@
 </head>
 
 <body class="bg-gray-100">
-<!-- Floating Mini Widget Butonu + Hedef Badge -->
-<div id="floatingNetButtonWrapper" style="position: fixed; bottom: 20px; right: 20px; z-index: 9999;">
+<!-- Floating Mini Widget Butonu + Açıklama -->
+<div id="floatingNetButtonWrapper" style="position: fixed; bottom: 20px; right: 20px; z-index: 9999; display: flex; flex-direction: column; align-items: flex-end; gap:4px;">
+  
+  <!-- Açıklama -->
+  <div style="
+      background: rgba(255,255,255,0.9);
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-size: 12px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+      color: #333;
+  ">Hedef puanınızı hesaplayın</div>
+
   <!-- İkon -->
   <button id="floatingNetButton" onclick="toggleFloatingWidget()" style="
       width:50px;
@@ -26,26 +37,7 @@
       cursor:pointer;
       box-shadow:0 4px 8px rgba(0,0,0,0.2);
       transition:0.3s;
-      position: relative;
   " onmouseover="this.style.background='#feb47b'" onmouseout="this.style.background='#ff7e5f'">📝</button>
-  
-  <!-- Hedef Puan Badge -->
-  <div id="floatingHedefBadge" style="
-      position: absolute;
-      top: -8px;
-      right: -8px;
-      background: #ff7e5f;
-      color: white;
-      font-size: 12px;
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-  ">0</div>
 </div>
 
 <!-- Floating Widget -->
@@ -74,7 +66,7 @@
         border:1px solid #ccc;
         font-size:13px;
         transition: border 0.2s;
-    " onfocus="this.style.borderColor='#ff7e5f'" onblur="this.style.borderColor='#ccc'" oninput="updateBadge()">
+    " onfocus="this.style.borderColor='#ff7e5f'" onblur="this.style.borderColor='#ccc'">
     <button onclick="hesaplaFloatingNet()" style="
         padding:5px 8px;
         font-size:13px;
@@ -109,18 +101,12 @@ function toggleFloatingWidget() {
     }
 }
 
-function updateBadge() {
-    let hedef = parseInt(document.getElementById('floatingHedefPuan').value) || 0;
-    document.getElementById('floatingHedefBadge').innerText = hedef;
-}
-
 function hesaplaFloatingNet() {
     let hedef = parseFloat(document.getElementById('floatingHedefPuan').value) || 0;
     if (hedef < 0) hedef = 0;
     if (hedef > 500) hedef = 500;
 
     document.getElementById('floatingHedefPuan').value = hedef;
-    document.getElementById('floatingHedefBadge').innerText = hedef;
 
     const tytNet = Math.round((hedef * 0.4) / 4);
     const aytNet = Math.round((hedef * 0.6) / 5);
@@ -131,7 +117,6 @@ function hesaplaFloatingNet() {
     let tytEl = document.getElementById('floatingTytNet');
     let aytEl = document.getElementById('floatingAytNet');
 
-    // Netler animasyonu
     tytEl.style.transform = "scale(1.2)";
     aytEl.style.transform = "scale(1.2)";
     setTimeout(()=>{ tytEl.style.transform="scale(1)"; aytEl.style.transform="scale(1)"; },250);
