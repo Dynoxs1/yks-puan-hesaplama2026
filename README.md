@@ -3,96 +3,34 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>YKS Net ve Puan Hesaplama | TYT AYT 2026</title>
 <meta name="description" content="YKS TYT ve AYT net hesaplama aracı. Doğru yanlış girerek netini ve tahmini puanını hemen öğren. Ücretsiz.">
-
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
 <body class="bg-gray-100">
-<!-- Floating Mini Widget Butonu + Açıklama -->
+<!-- Site içeriğin burada olacak -->
+
+<!-- 🔵 Kaç Net Yapmalıyım Widget Başlangıç -->
 <div id="floatingNetButtonWrapper" style="position: fixed; bottom: 90px; right: 10px; z-index: 9999; display: flex; flex-direction: column; align-items: flex-end; gap:4px;">
   
   <!-- Açıklama -->
-  <div style="
-      background: rgba(255,255,255,0.9);
-      padding: 3px 8px;
-      border-radius: 6px;
-      font-size: 12px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.15);
-      color: #333;
-  ">Hedef puanınızı hesaplayın</div>
+  <div style="background: rgba(255,255,255,0.9); padding: 3px 8px; border-radius: 6px; font-size: 12px; box-shadow: 0 2px 5px rgba(0,0,0,0.15); color: #333;">Hedef puanınızı hesaplayın</div>
 
   <!-- İkon -->
-  <button id="floatingNetButton" onclick="toggleFloatingWidget()" style="
-      width:50px;
-      height:50px;
-      border-radius:50%;
-      border:none;
-      background:#ff7e5f;
-      color:white;
-      font-size:24px;
-      cursor:pointer;
-      box-shadow:0 4px 8px rgba(0,0,0,0.2);
-      transition:0.3s;
-      position: relative;
-  " onmouseover="this.style.background='#feb47b'" onmouseout="this.style.background='#ff7e5f'">📝</button>
+  <button id="floatingNetButton" onclick="toggleFloatingWidget()" style="width:50px; height:50px; border-radius:50%; border:none; background:#ff7e5f; color:white; font-size:24px; cursor:pointer; box-shadow:0 4px 8px rgba(0,0,0,0.2); transition:0.3s; position: relative;" onmouseover="this.style.background='#feb47b'" onmouseout="this.style.background='#ff7e5f'">📝</button>
 </div>
 
 <!-- Floating Widget -->
-<div id="floatingNetWidget" style="
-    position: fixed;
-    bottom: 80px;
-    right: 10px;
-    width: 180px;
-    background: #ffecd2;
-    border-radius: 12px;
-    padding: 10px;
-    font-family: 'Poppins', sans-serif;
-    font-size: 13px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-    display:none;
-    transform: scale(0);
-    opacity: 0;
-    transition: transform 0.2s, opacity 0.2s;
-    z-index: 9999;
-">
+<div id="floatingNetWidget" style="position: fixed; bottom: 80px; right: 10px; width: 180px; background: #ffecd2; border-radius: 12px; padding: 10px; font-family: 'Poppins', sans-serif; font-size: 13px; box-shadow: 0 4px 10px rgba(0,0,0,0.15); display:none; transform: scale(0); opacity: 0; transition: transform 0.2s, opacity 0.2s; z-index: 9999;">
   <!-- Kapatma Butonu -->
-  <button onclick="toggleFloatingWidget()" style="
-      position: absolute;
-      top: -5px;
-      right: -5px;
-      border: none;
-      background: transparent;
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
-      color: #333;
-  ">×</button>
+  <button onclick="toggleFloatingWidget()" style="position: absolute; top: -5px; right: -5px; border: none; background: transparent; font-size: 16px; font-weight: bold; cursor: pointer; color: #333;">×</button>
 
   <!-- Hedef ve Hesapla -->
   <div style="display:flex; gap:2px; align-items:center;">
-    <input type="number" id="floatingHedefPuan" placeholder="Hedef" style="
-        width: 90px;  /* desktop genişliği */
-        padding:5px;
-        border-radius:5px;
-        border:1px solid #ccc;
-        font-size:13px;
-        transition: border 0.2s;
-    " onfocus="this.style.borderColor='#ff7e5f'" onblur="this.style.borderColor='#ccc'">
-    
-    <button onclick="hesaplaFloatingNet()" style="
-        padding:5px 8px;
-        font-size:13px;
-        border:none;
-        border-radius:5px;
-        background:#ff7e5f;
-        color:white;
-        cursor:pointer;
-        transition:0.3s;
-    " onmouseover="this.style.background='#feb47b'" onmouseout="this.style.background='#ff7e5f'">Hesapla</button>
+    <input type="number" id="floatingHedefPuan" placeholder="Hedef" style="width: 90px; padding:5px; border-radius:5px; border:1px solid #ccc; font-size:13px; transition: border 0.2s;" onfocus="this.style.borderColor='#ff7e5f'" onblur="this.style.borderColor='#ccc'">
+    <button onclick="hesaplaFloatingNet()" style="padding:5px 8px; font-size:13px; border:none; border-radius:5px; background:#ff7e5f; color:white; cursor:pointer; transition:0.3s;" onmouseover="this.style.background='#feb47b'" onmouseout="this.style.background='#ff7e5f'">Hesapla</button>
   </div>
 
   <!-- Net Sonuçları -->
@@ -122,7 +60,6 @@ function hesaplaFloatingNet() {
     let hedef = parseFloat(document.getElementById('floatingHedefPuan').value) || 0;
     if (hedef < 0) hedef = 0;
     if (hedef > 500) hedef = 500;
-
     document.getElementById('floatingHedefPuan').value = hedef;
 
     const tytNet = Math.round((hedef * 0.4) / 4);
@@ -141,21 +78,15 @@ function hesaplaFloatingNet() {
 </script>
 
 <style>
-/* Responsive: Mobilde input daralıyor, widget sağ alt köşede */
 @media (max-width: 768px) {
-    #floatingNetWidget {
-        width: 160px;
-        right: 5px;
-    }
-    #floatingNetButtonWrapper {
-        right: 5px;
-        align-items: flex-end;
-    }
-    #floatingHedefPuan {
-        width: 70px !important; /* mobilde input daralıyor */
-    }
+    #floatingNetWidget { width: 160px; right: 5px; }
+    #floatingNetButtonWrapper { right: 5px; align-items: flex-end; }
+    #floatingHedefPuan { width: 70px !important; }
 }
 </style>
+<!-- 🔵 Kaç Net Yapmalıyım Widget Son -->
+</body>
+</html>
 
 <!-- 🔵 BANNER -->
 <div class="w-full bg-white">
