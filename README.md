@@ -165,7 +165,7 @@ function hesaplaFloatingNet(){
 <div class="w-full bg-white mt-6">
   <img src="images/banner.jpg"
        alt="YKS Net ve Puan Hesaplama"
-       class="w-full h-[55vh] sm:h-[65vh] object-top">
+       class="w-full h-[55vh] sm:h-[65vh] object-cover object-center">
 </div>
 
 <!-- Banner altı animasyonlu kutular -->
