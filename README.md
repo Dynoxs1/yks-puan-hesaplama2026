@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
@@ -112,43 +112,6 @@ function hesaplaFloatingNet(){
 
 </body>
 </html>
-
-function toggleFloatingWidget() {
-    const widget = document.getElementById('floatingNetWidget');
-    if(widget.style.display === "none" || widget.style.display === "") {
-        widget.style.display = "block";
-        setTimeout(()=>{
-            widget.style.transform = "scale(1)";
-            widget.style.opacity = "1";
-        },10);
-    } else {
-        widget.style.transform = "scale(0)";
-        widget.style.opacity = "0";
-        setTimeout(()=>{ widget.style.display="none"; },200);
-    }
-}
-
-function hesaplaFloatingNet() {
-    let hedef = parseFloat(document.getElementById('floatingHedefPuan').value) || 0;
-    if (hedef < 0) hedef = 0;
-    if (hedef > 500) hedef = 500;
-
-    document.getElementById('floatingHedefPuan').value = hedef;
-
-    const tytNet = Math.round((hedef * 0.4) / 4);
-    const aytNet = Math.round((hedef * 0.6) / 5);
-
-    document.getElementById('floatingTytNet').innerText = tytNet;
-    document.getElementById('floatingAytNet').innerText = aytNet;
-
-    let tytEl = document.getElementById('floatingTytNet');
-    let aytEl = document.getElementById('floatingAytNet');
-
-    tytEl.style.transform = "scale(1.2)";
-    aytEl.style.transform = "scale(1.2)";
-    setTimeout(()=>{ tytEl.style.transform="scale(1)"; aytEl.style.transform="scale(1)"; },250);
-}
-</script>
 
 <style>
 /* Responsive: Mobilde input daralıyor, widget sağ alt köşede */
