@@ -44,7 +44,7 @@ window.addEventListener("load", function () {
         if (tip) {
             tip.style.display = "none";
         }
-    }, 4000);
+    }, 3000);
 });
 </script>
 
