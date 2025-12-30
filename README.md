@@ -171,23 +171,61 @@ function hesaplaFloatingNet() {
     setTimeout(()=>{ tytEl.style.transform="scale(1)"; aytEl.style.transform="scale(1)";},250);
 }
 
-// Puan İpuçları ve Sınav Tavsiyeleri
-const panelContent={puan:{title:"Puan İpuçları",text:"Ders planı yapın, deneme çözün ve yanlışlarınızı analiz edin. Günlük küçük hedefler motivasyonu artırır."},tavsiye:{title:"Sınav Tavsiyeleri",text:"Sınav günü stres yönetimi önemlidir. Zamanı verimli kullanın, soru tiplerini önceden çalışın ve kısa molalar verin."}};
+<!-- Açılır Panel -->
+<div id="infoPanel" class="panel hidden">
+  <button onclick="closePanel()" style="position:absolute;top:5px;right:5px;border:none;background:transparent;font-size:18px;cursor:pointer;">×</button>
+  <h4 id="panelTitle" style="color:#ff7e5f;margin-bottom:10px;"></h4>
+  <div id="panelText" style="font-size:14px;color:#555;line-height:1.5;"></div>
+</div>
+
+<script>
+// Gelişmiş içerik
+const panelContent = {
+  puan: { 
+    title: "📊 Puan İpuçları", 
+    text: `
+<ul style="padding-left:18px; margin:0;">
+<li>📝 <strong>Ders Planı Oluştur:</strong> Günlük ve haftalık hedefler belirle, konu dağılımını dengeli yap.</li>
+<li>⏱ <strong>Zamanı Verimli Kullan:</strong> Her konu için süre belirle, denemeleri süreli çöz.</li>
+<li>🔍 <strong>Yanlış Analizi:</strong> Yanlış yaptığın soruları mutlaka tekrar et, eksiklerini not al.</li>
+<li>💡 <strong>Küçük Hedefler:</strong> Günlük 5-10 soruluk mini hedefler motivasyonu artırır.</li>
+<li>📊 <strong>Denemelerle Ölçüm:</strong> Haftalık veya aylık denemelerle ilerlemeyi takip et.</li>
+</ul>
+`
+  },
+  tavsiye: { 
+    title: "🎯 Sınav Tavsiyeleri", 
+    text: `
+<ul style="padding-left:18px; margin:0;">
+<li>🧘‍♂️ <strong>Stres Yönetimi:</strong> Sınav öncesi nefes egzersizleri yap, rahatlamaya çalış.</li>
+<li>🕒 <strong>Zaman Yönetimi:</strong> Soruları hızlı okuyup süreyi dengeli kullan.</li>
+<li>📌 <strong>Soru Tiplerini Önceden Çalış:</strong> Test stratejilerini bilmek zamandan kazanmanı sağlar.</li>
+<li>☕ <strong>Kısa Molalar:</strong> Çalışma sırasında 5 dakikalık kısa molalar konsantrasyonu artırır.</li>
+<li>🌙 <strong>Uyku ve Beslenme:</strong> Sınav öncesi iyi uyumak ve hafif beslenmek performansı artırır.</li>
+</ul>
+`
+  }
+};
 
 function openPanel(key){
-    const panel=document.getElementById('infoPanel');
-    document.getElementById('panelTitle').innerText=panelContent[key].title;
-    document.getElementById('panelText').innerText=panelContent[key].text;
-    panel.classList.remove('hidden');
+  const panel = document.getElementById('infoPanel');
+  document.getElementById('panelTitle').innerHTML = panelContent[key].title;
+  document.getElementById('panelText').innerHTML = panelContent[key].text;
+  panel.classList.remove('hidden');
 }
 
 function closePanel(){
-    document.getElementById('infoPanel').classList.add('hidden');
+  document.getElementById('infoPanel').classList.add('hidden');
 }
 </script>
 
-</body>
-</html>
+<style>
+/* Mobil uyumlu panel yazısı */
+@media (max-width:768px){
+  #panelText ul li{font-size:13px;line-height:1.4;}
+  #panelTitle{font-size:16px;}
+}
+</style>
 
 <!-- Floating Mini Widget Butonu + Açıklama -->
 <div id="floatingNetButtonWrapper" style="position: fixed; bottom: 90px; right: 10px; z-index: 9999; display: flex; flex-direction: column; align-items: flex-end; gap:4px;">
