@@ -3,97 +3,98 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>YKS Net ve Puan Hesaplama | TYT AYT 2026</title>
-<meta name="description" content="YKS TYT ve AYT net hesaplama aracı. Doğru yanlış girerek netini ve tahmini puanını hemen öğren. Ücretsiz.">
-
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="https://cdn.tailwindcss.com"></script>
+<title>YKS Destek Sitesi</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+body{background:#f7f7f7;color:#333;line-height:1.5;}
+header{width:100%;padding:20px;text-align:center;font-size:24px;font-weight:600;background:linear-gradient(135deg,#ffecd2,#fcb69f);box-shadow:0 4px 8px rgba(0,0,0,0.1);}
+main{max-width:1200px;margin:40px auto;padding:0 20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;}
+.card{background:white;padding:20px;border-radius:12px;box-shadow:0 6px 12px rgba(0,0,0,0.1);transition:transform 0.3s,box-shadow 0.3s;cursor:pointer;}
+.card:hover{transform:translateY(-5px);box-shadow:0 12px 20px rgba(0,0,0,0.15);}
+.card h3{margin-bottom:10px;font-size:18px;font-weight:600;color:#ff7e5f;}
+.card p{font-size:14px;color:#555;margin-bottom:10px;}
+.btn{display:inline-block;padding:10px 18px;border:none;border-radius:8px;background:#ff7e5f;color:white;cursor:pointer;font-size:14px;transition:0.3s;text-decoration:none;text-align:center;}
+.btn:hover{background:#feb47b;}
+.hidden{display:none;}
+footer{text-align:center;padding:20px;margin-top:40px;background:#fff5ee;color:#555;font-size:14px;box-shadow:0 -2px 6px rgba(0,0,0,0.05);}
+@media(max-width:768px){main{grid-template-columns:1fr;}}
+</style>
 </head>
+<body>
 
-<body class="bg-gray-100">
-<!-- Floating Mini Widget Butonu + Açıklama -->
-<div id="floatingNetButtonWrapper" style="position: fixed; bottom: 90px; right: 10px; z-index: 9999; display: flex; flex-direction: column; align-items: flex-end; gap:4px;">
-  
-  <!-- Açıklama -->
-  <div style="
-      background: rgba(255,255,255,0.9);
-      padding: 3px 8px;
-      border-radius: 6px;
-      font-size: 12px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.15);
-      color: #333;
-  ">Hedef puanınızı hesaplayın</div>
+<header>🎯 YKS Destek Sitesi</header>
 
-  <!-- İkon -->
-  <button id="floatingNetButton" onclick="toggleFloatingWidget()" style="
-      width:50px;
-      height:50px;
-      border-radius:50%;
-      border:none;
-      background:#ff7e5f;
-      color:white;
-      font-size:24px;
-      cursor:pointer;
-      box-shadow:0 4px 8px rgba(0,0,0,0.2);
-      transition:0.3s;
-      position: relative;
-  " onmouseover="this.style.background='#feb47b'" onmouseout="this.style.background='#ff7e5f'">📝</button>
-</div>
-
-<!-- Floating Widget -->
-<div id="floatingNetWidget" style="
-    position: fixed;
-    bottom: 80px;
-    right: 10px;
-    width: 180px;
-    background: #ffecd2;
-    border-radius: 12px;
-    padding: 10px;
-    font-family: 'Poppins', sans-serif;
-    font-size: 13px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-    display:none;
-    transform: scale(0);
-    opacity: 0;
-    transition: transform 0.2s, opacity 0.2s;
-    z-index: 9999;
-">
-  <!-- Kapatma Butonu -->
-  <button onclick="toggleFloatingWidget()" style="
-      position: absolute;
-      top: -5px;
-      right: -5px;
-      border: none;
-      background: transparent;
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
-      color: #333;
-  ">×</button>
-
-  <!-- Hedef ve Hesapla -->
-  <div style="display:flex; gap:2px; align-items:center;">
-    <input type="number" id="floatingHedefPuan" placeholder="Hedef" style="
-        width: 90px;  /* desktop genişliği */
-        padding:5px;
-        border-radius:5px;
-        border:1px solid #ccc;
-        font-size:13px;
-        transition: border 0.2s;
-    " onfocus="this.style.borderColor='#ff7e5f'" onblur="this.style.borderColor='#ccc'">
-    
-    <button onclick="hesaplaFloatingNet()" style="
-        padding:5px 8px;
-        font-size:13px;
-        border:none;
-        border-radius:5px;
-        background:#ff7e5f;
-        color:white;
-        cursor:pointer;
-        transition:0.3s;
-    " onmouseover="this.style.background='#feb47b'" onmouseout="this.style.background='#ff7e5f'">Hesapla</button>
+<main>
+  <!-- Kaç Net Yapmalıyım Widget -->
+  <div class="card">
+      <h3>Kaç Net Yapmalıyım?</h3>
+      <p>Hedef puanınızı girin ve gerekli netleri görün.</p>
+      <a href="#" class="btn" onclick="document.getElementById('floatingNetButton').click()">Hesapla</a>
   </div>
+
+  <!-- Puan İpuçları -->
+  <div class="card" onclick="showContent('puan')">
+      <h3>Puan İpuçları</h3>
+      <p>TYT ve AYT puanınızı artırmak için kısa ve pratik tavsiyeler.</p>
+  </div>
+
+  <!-- Sınav Tavsiyeleri -->
+  <div class="card" onclick="showContent('tavsiyeler')">
+      <h3>Sınav Tavsiyeleri</h3>
+      <p>Kısa ve etkili sınav stratejileri ile zamanınızı verimli kullanın.</p>
+  </div>
+
+  <!-- İçerik Gösterme Alanı -->
+  <div id="contentArea" class="card hidden" style="position:relative;">
+      <!-- Çarpı Butonu -->
+      <button onclick="closeContent()" style="
+          position:absolute;
+          top:5px;
+          right:5px;
+          border:none;
+          background:transparent;
+          font-size:18px;
+          font-weight:bold;
+          cursor:pointer;
+          color:#333;
+      ">×</button>
+
+      <h3 id="contentTitle"></h3>
+      <p id="contentText"></p>
+  </div>
+
+</main>
+
+<footer>© 2025 YKS Destek. Tüm Hakları Saklıdır.</footer>
+
+<script>
+const content = {
+    'puan': {
+        title: 'Puan İpuçları',
+        text: 'Ders çalışma planı oluşturun, deneme sınavlarını düzenli çözün ve yanlışlarınızı analiz edin. Günlük küçük hedefler belirlemek motivasyonu artırır.'
+    },
+    'tavsiyeler': {
+        title: 'Sınav Tavsiyeleri',
+        text: 'Sınav günü stres yönetimi önemlidir. Zamanı verimli kullanın, soru tiplerini önceden çalışın ve kısa molalar verin.'
+    }
+};
+
+function showContent(key){
+    const area = document.getElementById('contentArea');
+    document.getElementById('contentTitle').innerText = content[key].title;
+    document.getElementById('contentText').innerText = content[key].text;
+    area.classList.remove('hidden');
+    area.scrollIntoView({behavior:'smooth'});
+}
+
+function closeContent(){
+    document.getElementById('contentArea').classList.add('hidden');
+}
+</script>
+
+</body>
+</html>
 
   <!-- Net Sonuçları -->
   <div id="floatingNetSonuc" style="margin-top:8px; display:flex; justify-content:space-between;">
