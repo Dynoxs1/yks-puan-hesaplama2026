@@ -23,21 +23,19 @@ header{width:100%;padding:20px;text-align:center;font-size:24px;font-weight:600;
 <!-- İlk Giriş İpucu Balonu -->
 <div id="firstVisitTip" style="
     position: fixed;
-    bottom: 160px;
-    right: 12px;
-    background: #ffffff;
-    padding: 10px 12px;
+    bottom: 200px;
+    right: 20px;
+    background: #fff;
+    padding: 12px 14px;
     border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    font-size: 13px;
-    max-width: 220px;
-    display: none;
-    z-index: 9998;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+    font-size: 14px;
+    max-width: 240px;
+    z-index: 2147483647;
 ">
-  <div style="font-weight:600; margin-bottom:4px;">💡 İpucu</div>
-  <div style="color:#555; line-height:1.4;">
-    TYT ve AYT doğru–yanlışlarını girerek netini hemen öğrenebilirsin.
-  </div>
+  <strong>💡 İpucu</strong><br>
+  TYT ve AYT doğru–yanlışlarını gir, netini anında öğren.
+</div>
 </div>
 
 <script>
