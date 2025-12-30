@@ -60,7 +60,15 @@ window.addEventListener("load", function () {
 <div style="max-width:1200px;margin:20px auto;padding:0 20px;">
   <button class="btn" onclick="openPanel('puan')">Puan İpuçları</button>
   <button class="btn" onclick="openPanel('tavsiye')">Sınav Tavsiyeleri</button>
-
+<div id="infoPanel" class="panel" style="display:none;">
+  <button onclick="closePanel()"
+    style="position:absolute;top:8px;right:10px;border:none;background:none;font-size:20px;cursor:pointer;">
+    ×
+  </button>
+  <h4 id="panelTitle" style="color:#ff7e5f;margin-bottom:10px;"></h4>
+  <div id="panelText" style="font-size:14px;color:#555;line-height:1.6;"></div>
+</div>
+    
 <!-- Floating Widget -->
 <div id="floatingNetButtonWrapper" style="position:fixed;bottom:90px;right:10px;z-index:9999;display:flex;flex-direction:column;align-items:flex-end;gap:4px;">
   <button id="floatingNetButton" onclick="toggleFloatingWidget()" style="width:50px;height:50px;border-radius:50%;border:none;background:#ff7e5f;color:white;font-size:24px;cursor:pointer;box-shadow:0 4px 8px rgba(0,0,0,0.2);transition:0.3s;" onmouseover="this.style.background='#feb47b'" onmouseout="this.style.background='#ff7e5f'">📝</button>
@@ -135,9 +143,6 @@ function hesaplaFloatingNet(){
   document.getElementById('floatingAytNet').innerText=Math.round((hedef*0.6)/5);
 }
 </script>
-
-</body>
-</html>
 
 <style>
 /* Responsive: Mobilde input daralıyor, widget sağ alt köşede */
