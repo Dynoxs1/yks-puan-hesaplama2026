@@ -61,13 +61,6 @@ window.addEventListener("load", function () {
   <button class="btn" onclick="openPanel('puan')">Puan İpuçları</button>
   <button class="btn" onclick="openPanel('tavsiye')">Sınav Tavsiyeleri</button>
 
-  <div id="infoPanel" class="panel">
-    <button onclick="closePanel()" style="position:absolute;top:5px;right:5px;border:none;background:transparent;font-size:18px;cursor:pointer;">×</button>
-    <h4 id="panelTitle" style="color:#ff7e5f;margin-bottom:10px;"></h4>
-    <div id="panelText" style="font-size:14px;color:#555;line-height:1.5;"></div>
-  </div>
-</div>
-
 <!-- Floating Widget -->
 <div id="floatingNetButtonWrapper" style="position:fixed;bottom:90px;right:10px;z-index:9999;display:flex;flex-direction:column;align-items:flex-end;gap:4px;">
   <button id="floatingNetButton" onclick="toggleFloatingWidget()" style="width:50px;height:50px;border-radius:50%;border:none;background:#ff7e5f;color:white;font-size:24px;cursor:pointer;box-shadow:0 4px 8px rgba(0,0,0,0.2);transition:0.3s;" onmouseover="this.style.background='#feb47b'" onmouseout="this.style.background='#ff7e5f'">📝</button>
