@@ -6,19 +6,8 @@
 <title>Modern Site</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 <style>
-  /* Global Reset */
-  * {
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-      font-family: 'Poppins', sans-serif;
-  }
-
-  body {
-      background: #f7f7f7;
-      color: #333;
-      line-height:1.5;
-  }
+  * { margin:0; padding:0; box-sizing:border-box; font-family: 'Poppins', sans-serif; }
+  body { background: #f7f7f7; color: #333; line-height:1.5; }
 
   /* Header */
   header {
@@ -36,38 +25,38 @@
       max-width:1200px;
       margin:40px auto;
       padding:0 20px;
-      display:grid;
-      grid-template-columns: repeat(auto-fill,minmax(250px,1fr));
-      gap:20px;
+      display:flex;
+      flex-direction:column;
+      gap:30px;
   }
 
-  /* Card */
-  .card {
+  /* Bölüm Kartları */
+  .section {
       background:white;
-      padding:20px;
+      padding:25px;
       border-radius:12px;
       box-shadow: 0 6px 12px rgba(0,0,0,0.1);
       transition: transform 0.3s, box-shadow 0.3s;
   }
 
-  .card:hover {
+  .section:hover {
       transform: translateY(-5px);
       box-shadow: 0 12px 20px rgba(0,0,0,0.15);
   }
 
-  .card h3 {
-      margin-bottom:10px;
-      font-size:18px;
+  .section h2 {
+      margin-bottom:15px;
+      font-size:20px;
       font-weight:600;
       color:#ff7e5f;
   }
 
-  .card p {
+  .section p {
       font-size:14px;
       color:#555;
+      margin-bottom:10px;
   }
 
-  /* Buttons */
   .btn {
       display:inline-block;
       padding:10px 18px;
@@ -82,11 +71,8 @@
       text-align:center;
   }
 
-  .btn:hover {
-      background:#feb47b;
-  }
+  .btn:hover { background:#feb47b; }
 
-  /* Footer */
   footer {
       text-align:center;
       padding:20px;
@@ -97,11 +83,8 @@
       box-shadow: 0 -2px 6px rgba(0,0,0,0.05);
   }
 
-  /* Responsive */
   @media (max-width:768px) {
-      main {
-          grid-template-columns: 1fr;
-      }
+      main { padding:0 15px; }
   }
 </style>
 </head>
@@ -110,20 +93,25 @@
 <header>💻 Modern Web Site</header>
 
 <main>
-  <div class="card">
-      <h3>Örnek Kart 1</h3>
-      <p>Bu bir örnek içerik kartıdır. Hover efekti ile hafif yükselir.</p>
+  <!-- Hakkımızda Bölümü -->
+  <div class="section">
+      <h2>Hakkımızda</h2>
+      <p>Biz modern ve kullanıcı dostu web çözümleri sunuyoruz. Sitemiz minimal ve hızlıdır.</p>
       <a href="#" class="btn">Detayları Gör</a>
   </div>
-  <div class="card">
-      <h3>Örnek Kart 2</h3>
-      <p>Modern ve minimal tasarım ile kullanıcıyı etkiler.</p>
-      <a href="#" class="btn">Detayları Gör</a>
+
+  <!-- Hizmetler Bölümü -->
+  <div class="section">
+      <h2>Hizmetlerimiz</h2>
+      <p>Web tasarım, yazılım geliştirme ve UI/UX danışmanlığı hizmetleri sunuyoruz.</p>
+      <a href="#" class="btn">Hizmetleri Keşfet</a>
   </div>
-  <div class="card">
-      <h3>Örnek Kart 3</h3>
-      <p>Responsive grid ile her ekranda uyumlu görünür.</p>
-      <a href="#" class="btn">Detayları Gör</a>
+
+  <!-- İletişim Bölümü -->
+  <div class="section">
+      <h2>İletişim</h2>
+      <p>Sorularınız mı var? Bizimle iletişime geçin, size yardımcı olalım.</p>
+      <a href="#" class="btn">İletişime Geç</a>
   </div>
 </main>
 
