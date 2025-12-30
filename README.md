@@ -57,7 +57,7 @@ window.addEventListener("load", function () {
 
 <header>🎯 YKS Destek Sitesi</header>
 
-<div style="max-width:1200px;margin:20px auto 30px;padding:0 20px;">
+<div style="max-width:1200px;margin:20px auto;padding:0 20px;">
   <button class="btn" onclick="openPanel('puan')">Puan İpuçları</button>
   <button class="btn" onclick="openPanel('tavsiye')">Sınav Tavsiyeleri</button>
 <div id="infoPanel" class="panel" style="display:none;">
@@ -162,7 +162,7 @@ function hesaplaFloatingNet(){
 </style>
 
 <!-- 🔵 BANNER -->
-<div class="w-full bg-white">
+<div class="w-full bg-white mt-6">
   <img src="images/banner.jpg"
        alt="YKS Net ve Puan Hesaplama"
        class="w-full h-[45vh] sm:h-[55vh] object-contain">
