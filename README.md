@@ -18,10 +18,21 @@ header{width:100%;padding:20px;text-align:center;font-size:24px;font-weight:600;
   #floatingNetWidget{width:160px !important; right:5px !important;}
   #floatingHedefPuan{width:70px !important;}
 }
-</style>
-</head>
-<body>
+<style>
+body{
+  background:
+    radial-gradient(circle at top left, #eef2ff, transparent 60%),
+    radial-gradient(circle at bottom right, #fff7ed, transparent 60%),
+    #f8fafc;
+}
 
+/* KART CAM EFEKTİ */
+.bg-white{
+  backdrop-filter: blur(6px);
+  background: rgba(255,255,255,0.9);
+}
+</style>
+  
 <header>🎯 YKS Destek Sitesi</header>
 
 <div style="max-width:1200px;margin:20px auto;padding:0 20px;">
@@ -172,6 +183,11 @@ function hesaplaFloatingNet(){
 <h1 class="text-3xl font-extrabold text-center mb-2 text-gray-800">
 YKS Net & Puan Hesaplama
 </h1>
+<div class="max-w-5xl mx-auto mt-6 px-4">
+  <div class="bg-white rounded-2xl shadow-md p-6 md:p-8">
+    <!-- TYT AYT içerik BURADA -->
+  </div>
+</div>
 
 <!-- TYT -->
 <h2 class="text-xl font-semibold mb-2">TYT</h2>
