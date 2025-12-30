@@ -3,121 +3,104 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>YKS Destek Sitesi</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-<style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
-body{background:#f7f7f7;color:#333;line-height:1.5;}
-.btn{display:inline-block;padding:8px 14px;border:none;border-radius:8px;background:#ff7e5f;color:white;cursor:pointer;font-size:14px;transition:0.3s;text-decoration:none;text-align:center;}
-.btn:hover{background:#feb47b;}
-.hidden{display:none;}
-</style>
-</head>
-<body>
 
-<!-- Widget: Kaç Net Yapmalıyım -->
+<title>YKS Net ve Puan Hesaplama | TYT AYT 2026</title>
+<meta name="description" content="YKS TYT ve AYT net hesaplama aracı. Doğru yanlış girerek netini ve tahmini puanını hemen öğren. Ücretsiz.">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100">
+<!-- Floating Mini Widget Butonu + Açıklama -->
+<div id="floatingNetButtonWrapper" style="position: fixed; bottom: 90px; right: 10px; z-index: 9999; display: flex; flex-direction: column; align-items: flex-end; gap:4px;">
+  
+  <!-- Açıklama -->
+  <div style="
+      background: rgba(255,255,255,0.9);
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-size: 12px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+      color: #333;
+  ">Hedef puanınızı hesaplayın</div>
+
+  <!-- İkon -->
+  <button id="floatingNetButton" onclick="toggleFloatingWidget()" style="
+      width:50px;
+      height:50px;
+      border-radius:50%;
+      border:none;
+      background:#ff7e5f;
+      color:white;
+      font-size:24px;
+      cursor:pointer;
+      box-shadow:0 4px 8px rgba(0,0,0,0.2);
+      transition:0.3s;
+      position: relative;
+  " onmouseover="this.style.background='#feb47b'" onmouseout="this.style.background='#ff7e5f'">📝</button>
+</div>
+
+<!-- Floating Widget -->
 <div id="floatingNetWidget" style="
     position: fixed;
-    bottom: 20px;
-    right: 20px;
+    bottom: 80px;
+    right: 10px;
     width: 180px;
-    background: linear-gradient(135deg,#ffecd2,#fcb69f);
-    border-radius:12px;
-    padding:12px;
-    box-shadow:0 6px 12px rgba(0,0,0,0.15);
-    font-family:'Poppins',sans-serif;
-    font-size:14px;
-    z-index:9999;
+    background: #ffecd2;
+    border-radius: 12px;
+    padding: 10px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    display:none;
+    transform: scale(0);
+    opacity: 0;
+    transition: transform 0.2s, opacity 0.2s;
+    z-index: 9999;
 ">
-  <h4 style="margin:0 0 10px 0; font-size:15px; text-align:center;">Kaç Net Yapmalıyım?</h4>
-  
-  <label>Hedef Puan:<br>
-    <input type="number" id="hedefPuan" style="width:60px;padding:4px;border-radius:6px;border:1px solid #ccc;margin-top:4px;" min="0" max="500">
-  </label><br><br>
-  
-  <button onclick="hesaplaNet()" class="btn" style="width:100%;">Hesapla</button>
-  
-  <div id="netSonuc" style="margin-top:10px;">
-    <p>📘 TYT Net: <span id="tytNetSonuc" style="transition: all 0.3s ease;">0</span></p>
-    <p>📗 AYT Net: <span id="aytNetSonuc" style="transition: all 0.3s ease;">0</span></p>
+  <!-- Kapatma Butonu -->
+  <button onclick="toggleFloatingWidget()" style="
+      position: absolute;
+      top: -5px;
+      right: -5px;
+      border: none;
+      background: transparent;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      color: #333;
+  ">×</button>
+
+  <!-- Hedef ve Hesapla -->
+  <div style="display:flex; gap:2px; align-items:center;">
+    <input type="number" id="floatingHedefPuan" placeholder="Hedef" style="
+        width: 90px;  /* desktop genişliği */
+        padding:5px;
+        border-radius:5px;
+        border:1px solid #ccc;
+        font-size:13px;
+        transition: border 0.2s;
+    " onfocus="this.style.borderColor='#ff7e5f'" onblur="this.style.borderColor='#ccc'">
+    
+    <button onclick="hesaplaFloatingNet()" style="
+        padding:5px 8px;
+        font-size:13px;
+        border:none;
+        border-radius:5px;
+        background:#ff7e5f;
+        color:white;
+        cursor:pointer;
+        transition:0.3s;
+    " onmouseover="this.style.background='#feb47b'" onmouseout="this.style.background='#ff7e5f'">Hesapla</button>
+  </div>
+
+  <!-- Net Sonuçları -->
+  <div id="floatingNetSonuc" style="margin-top:8px; display:flex; justify-content:space-between;">
+    <div>📘 TYT: <span id="floatingTytNet">0</span></div>
+    <div>📗 AYT: <span id="floatingAytNet">0</span></div>
   </div>
 </div>
-
-<!-- Puan İpuçları ve Sınav Tavsiyeleri Açılır Paneli -->
-<div id="infoPanel" class="hidden" style="
-    position: fixed;
-    bottom: 80px; 
-    right: 20px;
-    width: 260px;
-    background: white;
-    border-radius: 12px;
-    padding: 15px;
-    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-    z-index: 10000;
-    font-family: 'Poppins', sans-serif;
-">
-    <!-- Çarpı Butonu -->
-    <button onclick="closePanel()" style="
-        position:absolute;
-        top:5px;
-        right:5px;
-        border:none;
-        background:transparent;
-        font-size:18px;
-        font-weight:bold;
-        cursor:pointer;
-        color:#333;
-    ">×</button>
-
-    <h4 id="panelTitle" style="margin-bottom:10px; color:#ff7e5f; font-size:16px;"></h4>
-    <p id="panelText" style="font-size:14px; color:#555;"></p>
-</div>
-
-<!-- Butonlar siteye eklenebilir -->
-<div style="position:fixed; bottom:20px; left:20px; display:flex; flex-direction:column; gap:10px; z-index:9999;">
-    <button onclick="openPanel('puan')" class="btn">Puan İpuçları</button>
-    <button onclick="openPanel('tavsiye')" class="btn">Sınav Tavsiyeleri</button>
-</div>
-
-<script>
-// Hesaplama
-function hesaplaNet() {
-    let hedefInput = document.getElementById('hedefPuan');
-    let hedef = parseFloat(hedefInput.value) || 0;
-    if (hedef < 0) hedef = 0;
-    if (hedef > 500) { hedef = 500; hedefInput.value = 500; }
-    const tytNet = Math.round((hedef * 0.4) / 4); 
-    const aytNet = Math.round((hedef * 0.6) / 5); 
-    document.getElementById('tytNetSonuc').innerText = tytNet;
-    document.getElementById('aytNetSonuc').innerText = aytNet;
-}
-
-// Panel içerikleri
-const panelContent = {
-    puan: {
-        title: "Puan İpuçları",
-        text: "Ders planı yapın, deneme çözün ve yanlışlarınızı analiz edin. Günlük küçük hedefler motivasyonu artırır."
-    },
-    tavsiye: {
-        title: "Sınav Tavsiyeleri",
-        text: "Sınav günü stres yönetimi önemlidir. Zamanı verimli kullanın, soru tiplerini önceden çalışın ve kısa molalar verin."
-    }
-};
-
-function openPanel(key){
-    const panel = document.getElementById('infoPanel');
-    document.getElementById('panelTitle').innerText = panelContent[key].title;
-    document.getElementById('panelText').innerText = panelContent[key].text;
-    panel.classList.remove('hidden');
-}
-
-function closePanel(){
-    document.getElementById('infoPanel').classList.add('hidden');
-}
-</script>
-
-</body>
-</html>
 
 <script>
 function toggleFloatingWidget() {
