@@ -24,6 +24,35 @@ header{width:100%;padding:20px;text-align:center;font-size:24px;font-weight:600;
     #floatingHedefPuan{width:70px !important;}
 }
 </style>
+    /* Puan İpuçları & Tavsiyeler özel kutu */
+.info-box {
+  display: none;              
+  margin-top: 15px;
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 16px 18px;
+  box-shadow: 0 8px 22px rgba(0,0,0,0.08);
+  position: relative;
+}
+    
+/* Açılınca */
+.info-box.active {
+  display: inline-block;     
+  width: 100%;
+}
+
+/* Çarpı */
+.info-box .close-btn {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  font-size: 20px;
+  cursor: pointer;
+  color: #999;
+}
+.info-box .close-btn:hover {
+  color: #333;
+}
 </head>
 <!-- İlk Giriş İpucu Balonu -->
 <div id="firstVisitTip" style="
