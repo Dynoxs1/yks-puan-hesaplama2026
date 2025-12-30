@@ -4,22 +4,28 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>YKS Net ve Puan Hesaplama | TYT AYT 2026</title>
+<meta name="description" content="YKS TYT ve AYT net hesaplama aracı. Doğru yanlış girerek netini ve tahmini puanını hemen öğren. Ücretsiz.">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="https://cdn.tailwindcss.com"></script>
 <style>
+/* Genel stiller */
 body{background:#f7f7f7;color:#333;font-family:'Poppins',sans-serif;}
 header{width:100%;padding:20px;text-align:center;font-size:24px;font-weight:600;background:linear-gradient(135deg,#ffecd2,#fcb69f);box-shadow:0 4px 8px rgba(0,0,0,0.1);}
 .btn{display:inline-block;padding:8px 14px;border:none;border-radius:8px;background:#ff7e5f;color:white;cursor:pointer;font-size:14px;transition:0.3s;text-decoration:none;text-align:center;margin-right:10px;}
 .btn:hover{background:#feb47b;}
-.panel{background:white;border-radius:12px;padding:15px;box-shadow:0 6px 12px rgba(0,0,0,0.15);margin-top:10px;position:relative;display:none;}
-#panelText ul{padding-left:18px;margin:0;}
-@media(max-width:768px){
-  #panelText ul li{font-size:13px;line-height:1.4;}
-  #panelTitle{font-size:16px;}
-  #floatingNetWidget{width:160px !important; right:5px !important;}
-  #floatingHedefPuan{width:70px !important;}
+.hidden{display:none;}
+.panel{background:white;border-radius:12px;padding:15px;box-shadow:0 6px 12px rgba(0,0,0,0.15);margin-top:10px;position:relative;}
+/* Widget */
+#floatingNetButtonWrapper{position:fixed;bottom:90px;right:10px;z-index:9999;display:flex;flex-direction:column;align-items:flex-end;gap:4px;}
+#floatingNetWidget{position:fixed;bottom:80px;right:10px;width:180px;background:#ffecd2;border-radius:12px;padding:10px;font-size:13px;box-shadow:0 4px 10px rgba(0,0,0,0.15);display:none;transform:scale(0);opacity:0;transition: transform 0.2s, opacity 0.2s;z-index:9999;}
+@media (max-width:768px){
+    #floatingNetWidget{width:160px;right:5px;}
+    #floatingNetButtonWrapper{right:5px;align-items:flex-end;}
+    #floatingHedefPuan{width:70px !important;}
 }
 </style>
 </head>
+<body>
 <!-- İlk Giriş İpucu Balonu -->
 <div id="firstVisitTip" style="
     position: fixed;
