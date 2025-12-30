@@ -267,10 +267,71 @@ class="w-full bg-blue-600 text-white p-2 rounded hover:bg-blue-700 transition">
 Hesapla
 </button>
 
-<div id="sonuc" class="mt-4 text-center font-semibold"></div>
-<canvas id="grafik" class="mt-6"></canvas>
+ <!-- Grafik -->
+  <div class="mt-8" style="height:300px;">
+    <canvas id="puanGrafik"></canvas>
+  </div>
 
 </div>
+
+<script>
+let puanChart = null;
+
+function hesapla() {
+  const diploma = Number(document.getElementById("diploma").value) || 0;
+
+  const tytNet = 6;
+  const aytNet = 0;
+
+  const tytPuan = (tytNet * 20) + diploma;
+  const aytPuan = (aytNet * 20) + diploma;
+
+  document.getElementById("tytNet").innerText = tytNet.toFixed(2);
+  document.getElementById("aytNet").innerText = aytNet.toFixed(2);
+  document.getElementById("tytPuan").innerText = tytPuan.toFixed(2);
+  document.getElementById("aytPuan").innerText = aytPuan.toFixed(2);
+
+  grafikCiz(tytPuan, aytPuan);
+}
+
+function grafikCiz(tytPuan, aytPuan) {
+  const ctx = document.getElementById("puanGrafik").getContext("2d");
+
+  if (puanChart) {
+    puanChart.destroy();
+  }
+
+  puanChart = new Chart(ctx, {
+    type: "bar",
+    data: {
+      labels: ["TYT", "AYT"],
+      datasets: [{
+        label: "Puan",
+        data: [tytPuan, aytPuan],
+        backgroundColor: ["#60a5fa", "#34d399"],
+        borderRadius: 10
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      },
+      plugins: {
+        legend: {
+          display: true
+        }
+      }
+    }
+  });
+}
+</script>
+
+</body>
+</html>
 
 <!-- FOOTER -->
 <footer class="text-center text-sm mt-8 mb-4">
