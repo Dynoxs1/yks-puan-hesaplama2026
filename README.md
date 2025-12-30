@@ -69,17 +69,27 @@ window.addEventListener("load", function () {
 </div>
 
 <!-- Floating Widget -->
-<div id="floatingNetButtonWrapper" style="position:fixed;bottom:90px;right:10px;z-index:9999;display:flex;flex-direction:column;align-items:flex-end;gap:4px;">
-  <button id="floatingNetButton" onclick="toggleFloatingWidget()" style="width:50px;height:50px;border-radius:50%;border:none;background:#ff7e5f;color:white;font-size:24px;cursor:pointer;box-shadow:0 4px 8px rgba(0,0,0,0.2);transition:0.3s;" onmouseover="this.style.background='#feb47b'" onmouseout="this.style.background='#ff7e5f'">📝</button>
-  <div style="background: rgba(255,255,255,0.9); padding: 3px 8px; border-radius:6px; font-size:12px; box-shadow:0 2px 5px rgba(0,0,0,0.15); color:#333;">Hedef puanınızı hesaplayın</div>
+<div class="flex gap-3 mt-4">
+  <button onclick="openBox('puan')" class="px-4 py-2 bg-orange-400 text-white rounded-lg">
+    Puan İpuçları
+  </button>
+
+  <button onclick="openBox('tavsiye')" class="px-4 py-2 bg-orange-400 text-white rounded-lg">
+    Sınav Tavsiyeleri
+  </button>
 </div>
 
-<div id="floatingNetWidget" style="position:fixed;bottom:80px;right:10px;width:180px;background:#ffecd2;border-radius:12px;padding:10px;font-family:'Poppins',sans-serif;font-size:13px;box-shadow:0 4px 10px rgba(0,0,0,0.15);transform:scale(0);opacity:0;transition:0.2s;z-index:10001;">
-  <button onclick="toggleFloatingWidget()" style="position:absolute;top:-5px;right:-5px;border:none;background:transparent;font-size:16px;font-weight:bold;cursor:pointer;color:#333;z-index:10002;">×</button>
-  <div style="display:flex; gap:2px; align-items:center;">
-    <input type="number" id="floatingHedefPuan" placeholder="Hedef" style="width:90px;padding:5px;border-radius:5px;border:1px solid #ccc;font-size:13px;transition:border 0.2s;" onfocus="this.style.borderColor='#ff7e5f'" onblur="this.style.borderColor='#ccc'">
-    <button onclick="hesaplaFloatingNet()" style="padding:5px 8px;font-size:13px;border:none;border-radius:5px;background:#ff7e5f;color:white;cursor:pointer;transition:0.3s;" onmouseover="this.style.background='#feb47b'" onmouseout="this.style.background='#ff7e5f'">Hesapla</button>
-  </div>
+<div id="puan" class="info-box">
+  <span class="close-btn" onclick="closeBoxes()">×</span>
+  <h3 class="font-semibold mb-2">🎯 Puan İpuçları</h3>
+  <p>AYT netleri TYT’ye göre puanı daha hızlı yükseltir.</p>
+</div>
+
+<div id="tavsiye" class="info-box">
+  <span class="close-btn" onclick="closeBoxes()">×</span>
+  <h3 class="font-semibold mb-2">📘 Sınav Tavsiyeleri</h3>
+  <p>Deneme analizleri haftalık mutlaka yapılmalı.</p>
+</div>
   <div id="floatingNetSonuc" style="margin-top:8px; display:flex; justify-content:space-between;">
     <div>📘 TYT: <span id="floatingTytNet">0</span></div>
     <div>📗 AYT: <span id="floatingAytNet">0</span></div>
