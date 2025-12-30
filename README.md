@@ -23,37 +23,28 @@ header{width:100%;padding:20px;text-align:center;font-size:24px;font-weight:600;
 <!-- İlk Giriş İpucu Balonu -->
 <div id="firstVisitTip" style="
     position: fixed;
-    bottom: 200px;
-    right: 20px;
-    background: #fff;
-    padding: 12px 14px;
+    bottom: 170px;
+    right: 16px;
+    background: #ffffff;
+    padding: 10px 12px;
     border-radius: 10px;
     box-shadow: 0 6px 20px rgba(0,0,0,0.25);
-    font-size: 14px;
-    max-width: 240px;
+    font-size: 13px;
+    max-width: 220px;
     z-index: 2147483647;
 ">
   <strong>💡 İpucu</strong><br>
-  TYT ve AYT doğru–yanlışlarını gir, netini anında öğren.
-</div>
+  TYT ve AYT doğru–yanlışlarını girerek netini hemen öğrenebilirsin.
 </div>
 
 <script>
-document.addEventListener("DOMContentLoaded", function () {
-    if (!localStorage.getItem("firstVisitTipShown")) {
-        const tip = document.getElementById("firstVisitTip");
-
-        setTimeout(() => {
-            tip.style.display = "block";
-
-            // 4 saniye sonra otomatik kapanır
-            setTimeout(() => {
-                tip.style.display = "none";
-            }, 4000);
-
-            localStorage.setItem("firstVisitTipShown", "true");
-        }, 1200);
-    }
+window.addEventListener("load", function () {
+    setTimeout(function () {
+        var tip = document.getElementById("firstVisitTip");
+        if (tip) {
+            tip.style.display = "none";
+        }
+    }, 4000);
 });
 </script>
 
