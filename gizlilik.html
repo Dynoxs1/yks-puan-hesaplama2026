@@ -1,29 +1,223 @@
-<div class="page-container">
-<h1>Gizlilik Politikası</h1>
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gizlilik Politikası - YKS Puan Hesaplama</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Temel Ayarlar (Önceki sayfayla uyumlu) */
+        :root {
+            --primary-color: #3b82f6;
+            --primary-dark: #1d4ed8;
+            --text-color: #374151;
+            --bg-color: #f3f4f6;
+            --card-bg: #ffffff;
+            --accent-bg: #eff6ff;
+            --border-radius: 16px;
+            --success-color: #10b981; /* Güvenlik vurgusu için yeşil */
+        }
 
-<p>
-Bu gizlilik politikası, YKS Puan Hesaplama sitesini ziyaret eden
-kullanıcılar için geçerlidir.
-</p>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-<h2>Toplanan Bilgiler</h2>
-<ul>
-  <li>Kişisel bilgiler toplanmaz</li>
-  <li>Girilen doğru–yanlış verileri kaydedilmez</li>
-  <li>Hesaplamalar tarayıcı üzerinde yapılır</li>
-</ul>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            background-image: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
 
-<h2>Çerezler</h2>
-<p>
-Google AdSense ve üçüncü taraf reklam sağlayıcıları,
-kullanıcı deneyimini geliştirmek için çerezler kullanabilir.
-</p>
+        /* Kart Yapısı */
+        .policy-card {
+            background: var(--card-bg);
+            max-width: 800px;
+            width: 100%;
+            padding: 3rem;
+            border-radius: var(--border-radius);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 
+                        0 8px 10px -6px rgba(0, 0, 0, 0.01);
+            position: relative;
+            overflow: hidden;
+        }
 
-<p>
-Google reklam politikaları hakkında:
-<br>
-<a href="https://policies.google.com/technologies/ads" target="_blank">
-policies.google.com
-</a>
-</p>
-</div>
+        /* Üst Çizgi */
+        .policy-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, var(--primary-color), var(--success-color));
+        }
+
+        /* Header */
+        header {
+            margin-bottom: 2.5rem;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.25rem;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.025em;
+        }
+
+        .subtitle {
+            display: inline-block;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--success-color); /* Gizlilik için yeşil ton */
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            background: #ecfdf5;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            margin-bottom: 1rem;
+        }
+
+        /* Bölüm Başlıkları */
+        h2 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #111827;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #e5e7eb;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: #4b5563;
+        }
+
+        /* Özelleştirilmiş Liste (Güvenlik Maddeleri İçin) */
+        .privacy-list {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .privacy-list li {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 0.8rem;
+            color: #374151;
+            font-weight: 500;
+        }
+
+        .privacy-list li::before {
+            content: '✓'; /* Tik işareti */
+            position: absolute;
+            left: 0;
+            top: 2px;
+            height: 20px;
+            width: 20px;
+            background-color: #d1fae5;
+            color: var(--success-color);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 20px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        /* Dış Link Kutusu */
+        .link-box {
+            background-color: var(--accent-bg);
+            border: 1px solid #dbeafe;
+            border-radius: 8px;
+            padding: 1.25rem;
+            margin-top: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .external-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .external-link:hover {
+            color: var(--primary-dark);
+            text-decoration: underline;
+        }
+
+        /* Mobil */
+        @media (max-width: 600px) {
+            .policy-card {
+                padding: 2rem 1.5rem;
+            }
+            h1 {
+                font-size: 1.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <article class="policy-card">
+        <header>
+            <span class="subtitle">Güvenlik & Veri</span>
+            <h1>Gizlilik Politikası</h1>
+            <p style="margin-top: 1rem;">
+                Bu gizlilik politikası, <strong>YKS Puan Hesaplama</strong> sitesini ziyaret eden kullanıcılar için geçerlidir.
+            </p>
+        </header>
+
+        <section>
+            <h2>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--primary-color)"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                Toplanan Bilgiler
+            </h2>
+            <p>Kullanıcılarımızın gizliliğine önem veriyoruz. Sitemizin çalışma prensibi tamamen şeffaftır:</p>
+            <ul class="privacy-list">
+                <li>Kişisel bilgiler toplanmaz.</li>
+                <li>Girilen doğru–yanlış verileri sunucularımıza kaydedilmez.</li>
+                <li>Tüm hesaplamalar anlık olarak sizin tarayıcınız üzerinde (istemci tarafında) yapılır.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--primary-color)"><circle cx="12" cy="12" r="10"></circle><line x1="14.31" y1="8" x2="20.05" y2="17.94"></line><line x1="9.69" y1="8" x2="21.17" y2="8"></line><line x1="7.38" y1="12" x2="13.12" y2="2.06"></line><line x1="9.69" y1="16" x2="3.95" y2="6.06"></line><line x1="14.31" y1="16" x2="2.83" y2="16"></line><line x1="16.62" y1="12" x2="10.88" y2="21.94"></line></svg>
+                Çerezler ve Reklamlar
+            </h2>
+            <p>
+                Google AdSense ve üçüncü taraf reklam sağlayıcıları, sitemizdeki kullanıcı deneyimini geliştirmek ve kişiselleştirilmiş reklamlar sunmak amacıyla çerezler (cookies) kullanabilir.
+            </p>
+            
+            <div class="link-box">
+                Google reklam politikaları ve verilerin nasıl kullanıldığı hakkında daha fazla bilgi almak için:
+                <br><br>
+                <a href="https://policies.google.com" target="_blank" rel="noopener noreferrer" class="external-link">
+                    policies.google.com 
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                </a>
+            </div>
+        </section>
+
+    </article>
+
+</body>
+</html>
