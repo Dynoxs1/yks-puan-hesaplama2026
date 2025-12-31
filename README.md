@@ -24,7 +24,6 @@ header{width:100%;padding:20px;text-align:center;font-size:24px;font-weight:600;
     #floatingHedefPuan{width:70px !important;}
 }
 </style>
-</head>
   <title>Ders Programı Oluşturucu</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
@@ -70,7 +69,45 @@ header{width:100%;padding:20px;text-align:center;font-size:24px;font-weight:600;
       Programı Oluştur
     </button>
   </div>
+const dagilimlar = [
+  [1, 1, 0.5],
+  [1.5, 1, 0.5],
+  [2, 1],
+  [1, 1, 1],
+  [2, 1.5],
+  [1.5, 1, 1]
+];
+gunler.forEach((gun, i) => {
+  let gunlukSaat = ortalamaSaat + sapmalar[i];
+  gunlukSaat = Math.max(0.5, gunlukSaat);
 
+  const dagilim = dagilimlar[i % dagilimlar.length];
+  const oranToplam = dagilim.reduce((a, b) => a + b, 0);
+
+  const dersSayisi = dagilim.length;
+
+  const gunlukDersler = tumDersler
+    .slice(i)
+    .concat(tumDersler.slice(0, i))
+    .slice(0, dersSayisi);
+
+  const saatler = dagilim.map(o =>
+    Math.round((gunlukSaat * o / oranToplam) * 2) / 2
+  );
+  html += 
+    <div class="bg-white rounded-lg shadow p-4">
+      <h3 class="font-bold text-lg mb-2 text-center">
+        ${gun} <span class="text-sm text-gray-500">(${saatFormatla(gunlukSaat)})</span>
+      </h3>
+      <ul class="space-y-1 text-center">
+  
+  gunlukDersler.forEach((ders, idx) => {
+    html += <li>${ders} – ${saatFormatla(saatler[idx])}</li>`;
+  
+  html +=
+    </div>
+  `;
+});
   <!-- Sonuç -->
   <div id="sonuc"></div>
 
