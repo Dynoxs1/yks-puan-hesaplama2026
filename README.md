@@ -90,34 +90,33 @@ function programOlustur() {
     return;
   }
 
-  const secilenZayiflar = Array.from(
+  const zayiflar = Array.from(
     document.querySelectorAll("#dersler input:checked")
   ).map(cb => cb.value);
 
-  let alanDersleri = [];
+  let dersler = [];
 
   if (alan === "sayisal") {
-    alanDersleri = ["Matematik", "Fizik", "Kimya", "Biyoloji"];
+    dersler = ["Matematik", "Fizik", "Kimya", "Biyoloji"];
   } else if (alan === "ea") {
-    alanDersleri = ["Matematik", "Türkçe", "Edebiyat", "Tarih"];
+    dersler = ["Matematik", "Türkçe", "Edebiyat", "Tarih"];
   } else {
-    alanDersleri = ["Türkçe", "Edebiyat", "Tarih", "Coğrafya"];
+    dersler = ["Türkçe", "Edebiyat", "Tarih", "Coğrafya"];
   }
 
-  // Ağırlıklar
-  const agirlik = {};
-  alanDersleri.forEach(d => agirlik[d] = 1);
-
-  // Zayıf derslere ekstra +2
-  secilenZayiflar.forEach(d => {
-    if (agirlik[d] !== undefined) {
-      agirlik[d] += 2;
+  // zayıf dersleri çoğalt
+  let havuz = [];
+  dersler.forEach(d => {
+    havuz.push(d);
+    if (zayiflar.includes(d)) {
+      havuz.push(d); // +1 tekrar
+      havuz.push(d); // +2 tekrar
     }
   });
 
-  const toplamAgirlik = Object.values(agirlik).reduce((a,b)=>a+b,0);
+  // karıştır
+  havuz.sort(() => Math.random() - 0.5);
 
-  // Günler
   const gunler = ["Pazartesi","Salı","Çarşamba","Perşembe","Cuma","Cumartesi"];
 
   let html = `
@@ -127,15 +126,17 @@ function programOlustur() {
   `;
 
   gunler.forEach(gun => {
+    const gunlukDers = havuz.splice(0, 3); // her gün 3 ders
+    const dersSaati = Math.round((saat / gunlukDers.length) * 2) / 2; // 0.5 saat katları
+
     html += `
       <div class="bg-white rounded-lg shadow p-4">
         <h3 class="font-bold text-lg mb-2 text-center">${gun}</h3>
         <ul class="space-y-1 text-center">
     `;
 
-    Object.keys(agirlik).forEach(ders => {
-      const sure = ((agirlik[ders] / toplamAgirlik) * saat).toFixed(1);
-      html += `<li>${ders} – ${sure} saat</li>`;
+    gunlukDers.forEach(d => {
+      html += `<li>${d} – ${dersSaati} saat</li>`;
     });
 
     html += `
