@@ -84,50 +84,54 @@ header{width:100%;padding:20px;text-align:center;font-size:24px;font-weight:600;
 function programOlustur() {
   const alan = document.getElementById("alan").value;
   const saat = Number(document.getElementById("saat").value);
-
-  if (!saat) {
-    alert("Günlük çalışma saati gir kanka 😄");
-    return;
-  }
+  if (!saat) return alert("Saat gir kanka 😄");
 
   const zayiflar = Array.from(
     document.querySelectorAll("#dersler input:checked")
   ).map(cb => cb.value);
 
-  let dersler = [];
-
+  let temelDersler = [];
   if (alan === "sayisal") {
-    dersler = ["Matematik", "Fizik", "Kimya", "Biyoloji"];
+    temelDersler = ["Matematik", "Fizik", "Kimya", "Biyoloji"];
   } else if (alan === "ea") {
-    dersler = ["Matematik", "Türkçe", "Edebiyat", "Tarih"];
+    temelDersler = ["Matematik", "Türkçe", "Edebiyat", "Tarih"];
   } else {
-    dersler = ["Türkçe", "Edebiyat", "Tarih", "Coğrafya"];
+    temelDersler = ["Türkçe", "Edebiyat", "Tarih", "Coğrafya"];
   }
 
-  // zayıf dersleri çoğalt
+  // ağırlıklı havuz
   let havuz = [];
-  dersler.forEach(d => {
+  temelDersler.forEach(d => {
     havuz.push(d);
     if (zayiflar.includes(d)) {
-      havuz.push(d); // +1 tekrar
-      havuz.push(d); // +2 tekrar
+      havuz.push(d);
+      havuz.push(d);
     }
   });
-
-  // karıştır
-  havuz.sort(() => Math.random() - 0.5);
 
   const gunler = ["Pazartesi","Salı","Çarşamba","Perşembe","Cuma","Cumartesi"];
 
   let html = `
-  <div class="my-12">
-    <h2 class="text-3xl font-bold text-center mb-8">Haftalık Programın</h2>
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+    <div class="my-12">
+      <h2 class="text-3xl font-bold text-center mb-8">Haftalık Programın</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
   `;
 
   gunler.forEach(gun => {
-    const gunlukDers = havuz.splice(0, 3); // her gün 3 ders
-    const dersSaati = Math.round((saat / gunlukDers.length) * 2) / 2; // 0.5 saat katları
+    let gunluk = new Set();
+    let deneme = 0;
+
+    // her gün 2–3 farklı ders
+    const hedefDersSayisi = Math.random() < 0.5 ? 2 : 3;
+
+    while (gunluk.size < hedefDersSayisi && deneme < 20) {
+      const secilen = havuz[Math.floor(Math.random() * havuz.length)];
+      gunluk.add(secilen);
+      deneme++;
+    }
+
+    const gunlukDersler = Array.from(gunluk);
+    const dersSaati = Math.round((saat / gunlukDersler.length) * 2) / 2;
 
     html += `
       <div class="bg-white rounded-lg shadow p-4">
@@ -135,7 +139,7 @@ function programOlustur() {
         <ul class="space-y-1 text-center">
     `;
 
-    gunlukDers.forEach(d => {
+    gunlukDersler.forEach(d => {
       html += `<li>${d} – ${dersSaati} saat</li>`;
     });
 
