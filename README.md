@@ -96,75 +96,7 @@ function saatFormatla(saat) {
 function programOlustur() {
   const alan = document.getElementById("alan").value;
   const gunlukSaat = Number(document.getElementById("saat").value);
-  // ⛔ saat kontrolü
-  if (isNaN(gunlukSaat) || gunlukSaat <= 0 || gunlukSaat > 24) {
-    alert("Günlük çalışma saati 0–24 arasında olmalı kanka 😄");
-    return;
-  }
-
-  const zayiflar = Array.from(
-    document.querySelectorAll("#dersler input:checked")
-  ).map(cb => cb.value);
-
-  let alanDersleri = [];
-  if (alan === "sayisal") {
-    alanDersleri = ["Matematik", "Fizik", "Kimya", "Biyoloji"];
-  } else if (alan === "ea") {
-    alanDersleri = ["Matematik", "Türkçe", "Edebiyat", "Tarih"];
-  } else {
-    alanDersleri = ["Türkçe", "Edebiyat", "Tarih", "Coğrafya"];
-  }
-
-  // alan dışı zayıfları da ekle
-  const tumDersler = Array.from(new Set([...alanDersleri, ...zayiflar]));
-
-  const gunler = ["Pazartesi","Salı","Çarşamba","Perşembe","Cuma","Cumartesi"];
-
-  let html = `
-    <div class="my-12">
-      <h2 class="text-3xl font-bold text-center mb-8">Haftalık Programın</h2>
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-  `;
-
-  gunler.forEach((gun, i) => {
-    // her gün 3 farklı ders
-    const gunlukDersler = tumDersler
-      .slice(i)
-      .concat(tumDersler.slice(0, i))
-      .slice(0, 3);
-
-    // temel saat
-    let temelSaat = Math.floor((gunlukSaat / gunlukDersler.length) * 2) / 2;
-    let saatler = gunlukDersler.map(() => temelSaat);
-
-    // fark yarat (+0.5 / -0.5)
-    if (saatler.length >= 2) {
-      saatler[0] += 0.5;
-      saatler[saatler.length - 1] -= 0.5;
-    }
-
-    // güvenlik (0 altına düşmesin)
-    saatler = saatler.map(s => Math.max(0.5, s));
-
-    html += `
-      <div class="bg-white rounded-lg shadow p-4">
-        <h3 class="font-bold text-lg mb-2 text-center">${gun}</h3>
-        <ul class="space-y-1 text-center">
-    `;
-
-    gunlukDersler.forEach((ders, idx) => {
-      html += `<li>${ders} – ${saatler[idx]} saat</li>`;
-    });
-
-    html += `
-        </ul>
-      </div>
-    `;
-  });
-
-  html += `</div></div>`;
-  document.getElementById("sonuc").innerHTML = html;
-}
+  
 </script>
 
 </body>
