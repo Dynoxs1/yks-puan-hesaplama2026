@@ -72,7 +72,7 @@ window.addEventListener("load", function () {
 <!-- Floating Widget -->
 <div id="floatingNetButtonWrapper" style="position:fixed;bottom:90px;right:10px;z-index:9999;display:flex;flex-direction:column;align-items:flex-end;gap:4px;">
   <button id="floatingNetButton" onclick="toggleFloatingWidget()" style="width:50px;height:50px;border-radius:50%;border:none;background:#ff7e5f;color:white;font-size:24px;cursor:pointer;box-shadow:0 4px 8px rgba(0,0,0,0.2);transition:0.3s;" onmouseover="this.style.background='#feb47b'" onmouseout="this.style.background='#ff7e5f'">📝</button>
-  <div style="background: rgba(255,255,255,0.9); padding: 3px 8px; border-radius:6px; font-size:12px; box-shadow:0 2px 5px rgba(0,0,0,0.15); color:#333;">
+  <div style="background: rgba(255,255,255,0.9); padding: 3px 8px; border-radius:6px; font-size:12px; box-shadow:0 2px 5px rgba(0,0,0,0.15); color:#333;">Hedef puanınızı hesaplayın</div>
 </div>
 
 <div id="floatingNetWidget" style="position:fixed;bottom:80px;right:10px;width:180px;background:#ffecd2;border-radius:12px;padding:10px;font-family:'Poppins',sans-serif;font-size:13px;box-shadow:0 4px 10px rgba(0,0,0,0.15);transform:scale(0);opacity:0;transition:0.2s;z-index:10001;">
